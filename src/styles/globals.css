@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=DM+Sans:wght@400;500;700&family=Montserrat:wght@300;400;500&family=Mulish:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.shadow-form {
+  box-shadow: 0px 4px 35px rgba(0, 0, 0, 0.12);
+}
+
+/* .ant-menu-item {
+  width: 100% !important;
+  margin: auto !important;
+  border-radius: 0 !important;
+} */
+/* .ant-menu-item{
+  color: black ;
+} */
+.ant-table-column-sorter {
+  display: none !important;
+}
+
+/* #newOrders .ant-table-tbody tr {
+  background-color: #fc8383;
+  border-radius: 50px !important;
+  padding: 10px !important;
+  margin-top: 50px !important;
+} */
+.ant-table-thead tr th {
+  background-color: #fafbff !important;
+  border-right: none !important;
+}
+
+table {
+  background-color: #fafbff;
+}
+
+
+.ant-table-thead tr th::before {
+  background-color: transparent !important;
+}
+
+.ant-menu-item:not(:first-child) {
+  margin-top: 0.5rem !important;
+}
+
+.ant-menu-item.ant-menu-item-selected {
+  background-color: #2f9379 !important;
+}
+
+.ant-layout-sider-trigger {
+  background-color: #2f9379 !important;
+}
+
+/* .ant-layout-sider,
+.ant-menu {
+  background-color: white !important;
+}
+
+.ant-layout-header {
+  background-color: white !important;
+} */
+
+.ant-layout-sider {
+  box-shadow: 4px 11px 12px rgba(0, 0, 0, 0.12) !important;
+}
+
+.sidebar {
+  overflow-y: auto;
+  max-height: 80vh !important;
+  /* padding-bottom: 1rem !important; */
+}
+
+::-webkit-scrollbar {
+  width: 0.5em;
+  height: 0.5em;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px !important;
+  background-color: #2f9379 !important;
+}
+.main-content::-webkit-scrollbar-track {
+  background: white !important;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: white;
+}
+
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+.sidebar:hover::-webkit-scrollbar {
+  /* overflow: scroll; */
+  display: block;
+  width: 6px;
+}
+
+.ant-layout-sider-collapsed .user {
+  display: none !important;
+}
+
+.tableWrapper {
+  display: flex;
+  flex-flow: column;
+  gap: 5px;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  box-shadow: 2px 4px 24px rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+.btn-primary {
+  background: #2f9379 !important;
+  font-family: "Poppins";
+}
+
+.tableWrapper .ant-table-thead tr th {
+  background-color: white !important;
+  border-right: none !important;
+}
+
+.tableWrapper table {
+  background-color: white;
+}
+
+.ant-popconfirm-buttons{
+  display: none !important;
+}
+
+.ant-dropdown-menu-item-active{
+  background: none !important;
+}
