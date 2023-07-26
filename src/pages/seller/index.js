@@ -39,8 +39,8 @@ const Index = () => {
             email: "demoseller@email.com",
             reviews: "5",
             statistics: {
-            newOrders: 45,
-            income: "$678k"
+                newOrders: 45,
+                income: "$678k"
             }
         },
         {
@@ -54,7 +54,7 @@ const Index = () => {
             statistics: {
                 newOrders: 45,
                 income: "$678k"
-                }
+            }
         },
         {
             id: 3,
@@ -67,7 +67,7 @@ const Index = () => {
             statistics: {
                 newOrders: 45,
                 income: "$678k"
-                }
+            }
         },
         {
             id: 4,
@@ -80,9 +80,8 @@ const Index = () => {
             statistics: {
                 newOrders: 45,
                 income: "$678k"
-                }
-        },
-        {
+            }
+        }, {
             id: 5,
             name: "James Williams",
             image: "/images/seller2.svg",
@@ -93,9 +92,8 @@ const Index = () => {
             statistics: {
                 newOrders: 45,
                 income: "$678k"
-                }
-        },
-        {
+            }
+        }, {
             id: 6,
             name: "James Williams",
             image: "/images/seller3.svg",
@@ -106,9 +104,8 @@ const Index = () => {
             statistics: {
                 newOrders: 45,
                 income: "$678k"
-                }
-        },
-        {
+            }
+        }, {
             id: 7,
             name: "James Williams",
             image: "/images/seller1.svg",
@@ -119,9 +116,8 @@ const Index = () => {
             statistics: {
                 newOrders: 45,
                 income: "$678k"
-                }
-        },
-        {
+            }
+        }, {
             id: 8,
             name: "James Williams",
             image: "/images/seller2.svg",
@@ -132,44 +128,52 @@ const Index = () => {
             statistics: {
                 newOrders: 45,
                 income: "$678k"
-                }
+            }
         },
     ]
 
-    
 
-    const sellersPerPage = 4; // Number of sellers to display per page
+    const sellersPerPage = 4; 
     const [currentPage, setCurrentPage] = useState(1);
-     // Calculate the indexes of sellers to display on the current page
-  const indexOfLastSeller = currentPage * sellersPerPage;
-  const indexOfFirstSeller = indexOfLastSeller - sellersPerPage;
-  const currentSellers = sellers.slice(indexOfFirstSeller, indexOfLastSeller);
+    
+    const indexOfLastSeller = currentPage * sellersPerPage;
+    const indexOfFirstSeller = indexOfLastSeller - sellersPerPage;
+    const currentSellers = sellers.slice(indexOfFirstSeller, indexOfLastSeller);
 
-  const totalPages = Math.ceil(sellers.length / sellersPerPage);
+    const totalPages = Math.ceil(sellers.length / sellersPerPage);
 
-  const handlePagination = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
+    const handlePagination = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
 
-  const handleNextPage = () => {
-    setCurrentPage((prevPage) => prevPage + 1);
-  };
+    const handleNextPage = () => {
+        setCurrentPage((prevPage) => prevPage + 1);
+    };
 
-  // Function to handle Previous button
-  const handlePrevPage = () => {
-    setCurrentPage((prevPage) => prevPage - 1);
-  };
+    const handlePrevPage = () => {
+        setCurrentPage((prevPage) => prevPage - 1);
+    };
 
-  let pageNumbers = [];
-  if (totalPages <= 3) {
-    pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
-  } else if (currentPage <= 2) {
-    pageNumbers = [1, 2, 3];
-  } else if (currentPage >= totalPages - 1) {
-    pageNumbers = [totalPages - 2, totalPages - 1, totalPages];
-  } else {
-    pageNumbers = [currentPage - 1, currentPage, currentPage + 1];
-  }
+    let pageNumbers = [];
+    if (totalPages <= 3) {
+        pageNumbers = Array.from({
+            length: totalPages
+        }, (_, index) => index + 1);
+    } else if (currentPage <= 2) {
+        pageNumbers = [1, 2, 3];
+    } else if (currentPage >= totalPages - 1) {
+        pageNumbers = [
+            totalPages - 2,
+            totalPages - 1,
+            totalPages
+        ];
+    } else {
+        pageNumbers = [
+            currentPage - 1,
+            currentPage,
+            currentPage + 1
+        ];
+    }
 
     return (
         <div className="w-full">
@@ -179,7 +183,7 @@ const Index = () => {
             <div className="h-full w-full bg-[#F9F9F9] my-4">
                 <div className="flex justify-between mx-[2rem] bg-[#FFFFFF] rounded-md shadow-md px-4 py-4">
                     <div>
-                        <h1 className="text-[24px] font-[600]">Dashboard</h1>
+                        <h1 className="text-[24px] font-[600]">Seller</h1>
                     </div>
                     <div className="flex items-center">
                         <div className="flex mr-3">
@@ -205,7 +209,13 @@ const Index = () => {
                                 className="ml-2"/></div>
                     </div>
                     <div className="flex flex-col items-right">
-                        <div className="text-[1gpx] font-medium text-right">View Profile: {currentSellers.length} {"/"} {sellers.length}</div>
+                        <div className="text-[1gpx] font-medium text-right">View Profile: {
+                            currentSellers.length
+                        }
+                            {"/"}
+                            {
+                            sellers.length
+                        }</div>
                         <div className="text-[14px] font-[500] flex border border-[#0852C12B] items-center px-2 rounded-md my-1">
                             Sort by:{" "}
                             <div className="relative text-left ml-2">
@@ -221,43 +231,47 @@ const Index = () => {
                 </div>
 
                 <div className="flex flex-col gap-4 mx-4">
-                {currentSellers.map((seller) => (
-            <SellerCard key={seller.id} seller={seller} />
-          ))}
-        </div>
+                    {
+                    currentSellers.map((seller) => (
+                        <SellerCard key={
+                                seller.id
+                            }
+                            seller={seller}/>
+                    ))
+                } </div>
 
-        <div className="flex justify-center mt-4">
-        {currentPage > 1 && (
-          <div
-            className={`w-8 h-8 rounded-full mx-1 flex items-center justify-center cursor-pointer bg-white text-[#0852C1]`}
-            onClick={handlePrevPage}
-          >
-            {"<"}
-          </div>
-        )}
-        {pageNumbers.map((pageNumber) => (
-          <div
-            key={pageNumber}
-            onClick={() => handlePagination(pageNumber)}
-            className={`w-8 h-8 rounded-full mx-1 flex items-center justify-center cursor-pointer ${
-              currentPage === pageNumber ? "bg-[#0852C1] text-white" : "bg-white text-[#0852C1]"
-            }`}
-          >
-            {pageNumber}
-          </div>
-        ))}
-        {currentPage < totalPages && (
-          <div
-            className={`w-8 h-8 rounded-full mx-1 flex items-center justify-center cursor-pointer bg-white text-[#0852C1]`}
-            onClick={handleNextPage}
-          >
-            {">"}
-          </div>
-        )}
-      </div>
+                <div className="flex justify-center mt-4">
+                    {
+                    currentPage > 1 && (
+                        <div className={`w-8 h-8 rounded-full mx-1 flex items-center justify-center cursor-pointer bg-white text-[#0852C1]`}
+                            onClick={handlePrevPage}>
+                            {"<"} </div>
+                    )
+                }
+                    {
+                    pageNumbers.map((pageNumber) => (
+                        <div key={pageNumber}
+                            onClick={
+                                () => handlePagination(pageNumber)
+                            }
+                            className={
+                                `w-8 h-8 rounded-full mx-1 flex items-center justify-center cursor-pointer ${
+                                    currentPage === pageNumber ? "bg-[#0852C1] text-white" : "bg-white text-[#0852C1]"
+                                }`
+                        }>
+                            {pageNumber} </div>
+                    ))
+                }
+                    {
+                    currentPage < totalPages && (
+                        <div className={`w-8 h-8 rounded-full mx-1 flex items-center justify-center cursor-pointer bg-white text-[#0852C1]`}
+                            onClick={handleNextPage}>
+                            {">"} </div>
+                    )
+                } </div>
 
 
-             </div>
+            </div>
         </div>
     );
 };

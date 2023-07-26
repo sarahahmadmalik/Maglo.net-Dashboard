@@ -21,7 +21,7 @@
   font-family: 'Inter', sans-serif;
 }
 
-.ant-table-column-sorter {
+/* .ant-table-column-sorter {
   display: none !important;
 }
 
@@ -31,10 +31,7 @@
   padding: 10px !important;
   margin-top: 50px !important;
 } */
-.ant-table-thead tr th {
-  background-color: #fafbff !important;
-  border-right: none !important;
-}
+
 
 table {
   background-color: #fafbff;
@@ -50,7 +47,7 @@ table {
 }
 
 .ant-menu-item.ant-menu-item-selected {
-  background-color: #2f9379 !important;
+  background-color: #0852C1 !important;
 }
 
 .ant-layout-sider-trigger {
@@ -68,11 +65,12 @@ table {
 
 .ant-layout-sider {
   box-shadow: 4px 11px 12px rgba(0, 0, 0, 0.12) !important;
-}
+} 
 
 .sidebar {
   overflow-y: auto;
   max-height: 80vh !important;
+  color: black;
   /* padding-bottom: 1rem !important; */
 }
 
@@ -81,18 +79,9 @@ table {
   height: 0.5em;
 }
 
-::-webkit-scrollbar-thumb {
-  border-radius: 10px !important;
-  background-color: #2f9379 !important;
-}
-.main-content::-webkit-scrollbar-track {
-  background: white !important;
-}
 
-::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: white;
-}
+
+
 
 .sidebar::-webkit-scrollbar {
   display: none;
@@ -104,7 +93,7 @@ table {
   width: 6px;
 }
 
-.ant-layout-sider-collapsed .user {
+/* .ant-layout-sider-collapsed .user {
   display: none !important;
 }
 
@@ -141,4 +130,9 @@ table {
 
 .ant-dropdown-menu-item-active{
   background: none !important;
+} */
+
+body{
+  background-color: #F9F9F9;
 }
+

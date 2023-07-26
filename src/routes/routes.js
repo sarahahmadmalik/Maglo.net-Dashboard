@@ -116,7 +116,7 @@ const routes = [
     roles: ["user", "admin"],
   },
     {
-    path: "/accountsettings",
+    path: "/acountsettings",
     icon: <Image src={"/images/settings_icon.svg"} width={14} height={14} />,
     title: "Account Settings",
     roles: ["user", "admin"],

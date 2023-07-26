@@ -125,9 +125,6 @@ const Index = ({ children }) => {
           </div> */}
         </Header>
         <Content
-          style={{
-            background: "#FAFBFF",
-          }}
         >
           
 
