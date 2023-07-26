@@ -129,17 +129,9 @@ const Index = ({ children }) => {
             background: "#FAFBFF",
           }}
         >
-          <div
-            className="bg-[#FAFBFF]"
-            style={{
-              padding: 24,
-              minHeight: 360,
-              height: "85vh",
-              overflowY: "scroll",
-            }}
-          >
+          
+
             {children}
-          </div>
         </Content>
       </Layout>
     </Layout>

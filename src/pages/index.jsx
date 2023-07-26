@@ -1,10 +1,27 @@
 import TopCard from "@/components/Home/TopCard";
-import { Avatar, Button, Select, Table, Tag } from "antd";
+// import { Avatar, Button, Select, Table, Tag } from "antd";
 import Head from "next/head";
 import Image from "next/image";
-import { UserOutlined } from "@ant-design/icons";
+// import { UserOutlined } from "@ant-design/icons";
+import ConversationRate from '../components/Home/ConversationRate'
+import Stats from '../components/Home/Stats'
+import ProfitPerformance from '../components/Home/ProfitPerformance'
+import Visitors from '../components/Home/Visitors'
+import MostVisited from '../components/Home/MostVisited'
 
 const Index = () => {
+  const currentDateAndTime = new Date();
+  const options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  };
+  let formattedDateTime = currentDateAndTime.toLocaleString("en-US", options);
+  formattedDateTime = formattedDateTime.replace(" at", "");
+
   const columns = [
     {
       title: (
@@ -239,11 +256,12 @@ const Index = () => {
     console.log("params", pagination, filters, sorter, extra);
   };
   return (
+    
     <>
       <Head>
         <title>Dashboard</title>
       </Head>
-      <main className="flex flex-col space-y-10">
+      {/* <main className="flex flex-col space-y-10">
         <div className="flex flex-col items-start md:flex-row space-y-5 md:space-y-0 md:items-center justify-between">
           <div>
             <h2 className="text-2xl font-barlow font-semibold">Dashboard</h2>
@@ -289,7 +307,7 @@ const Index = () => {
               ]}
             />
           </div> */}
-        </div>
+        {/* </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           <TopCard
             title="Total Orders"
@@ -337,8 +355,76 @@ const Index = () => {
             id="newOrders"
             scroll={{ x: 900 }}
           />
+        </div> */}
+      {/* </main> */} 
+      <div className="h-full w-full bg-[#F9F9F9] m-0">
+          <div className="w-full h-full flex flex-col flex-grow py-4">
+            {/* <div className="flex flex-row justify-between w-[100%] items-center px-4 py-2">
+              <div className="relative mx-4 w-[40%] ">
+                <input
+                  type="text"
+                  placeholder="Search for"
+                  className="flex-grow bg-[#FFFFFF] py-1 px-5 w-full outline-none rounded-md border border-[#0852C12B]"
+                />
+                <Image
+                  src="/assets/searchIcon.svg"
+                  className="absolute top-2 right-2"
+                  width={17}
+                  height={17}
+                  alt="Search Icon"
+                />
+              </div>
+              <div className="flex items-center px-4 py-2">
+                <div className="relative flex align-center justify-center w-8 h-8 mr-3 rounded-full">
+                  <Image src="/assets/country.svg" fill objectFit="contain" alt="Location Icon" />
+                </div>
+                <div className="relative mx-3">
+                  <Image src="/assets/bellIcon.svg" width={24} height={24} alt="Bell Icon" />
+                  <span className="absolute -top-5 -right-1 px-2 py-1 text-xs font-medium text-white bg-red-500 rounded-full">
+                    9
+                  </span>
+                </div>
+                <div className="relative mx-3">
+                  <div className="flex align-center justify-center w-10 h-10 rounded-full bg-blue-500">
+                    <Image src="/assets/userAdmin.svg" width={20} height={20} alt="User Icon" />
+                  </div>
+                </div>
+              </div>
+            </div> */}
+
+            <div className="flex justify-between mx-[2rem] bg-[#FFFFFF] rounded-md shadow-md px-4 py-4">
+              <div>
+                <h1 className="text-[24px] font-[600]">Dashboard</h1>
+              </div>
+              <div className="flex items-center">
+                <div className="flex mr-3">
+                  <p className="text-xs mr-2">Data Refreshed</p>
+                  <Image src="/images/refresh.svg" width={15} height={15} alt="Refresh Icon" />
+                </div>
+                <div className="bg-[#F0F5FB] border rounded-md border-[#0852C12B] px-3 py-3 text-xs font-medium">
+                  <p>{formattedDateTime}</p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div className="flex items-start mx-[2rem]">
+              <ConversationRate/>
+              <Stats/>
+              <ProfitPerformance/>
+              </div>
+
+              <div  className="flex items-start mx-[2rem]">
+                <Visitors/>
+                <MostVisited/>
+              </div>
+            
+            
+            </div>
+
+          </div>
         </div>
-      </main>
+        
     </>
   );
 };

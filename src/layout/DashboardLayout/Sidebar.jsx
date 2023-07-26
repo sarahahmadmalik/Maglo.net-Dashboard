@@ -21,7 +21,7 @@ const Sidebar = ({ role }) => {
   return (
     <Sider collapsible style={{ paddingTop: "1rem" }}>
       <div className="flex items-center justify-center">
-        <Image src={"/images/logo.svg"} width={118} height={48} />
+        <Image src={"/images/Maglolologo.svg"} width={118} height={48} />
       </div>
       <Menu
         style={{
