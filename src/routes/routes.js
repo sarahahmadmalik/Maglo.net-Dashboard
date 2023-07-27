@@ -98,6 +98,12 @@ const routes = [
     roles: ["user", "admin"],
   },
   {
+    path: "/orders",
+    icon: <Image src={"/images/bag.svg"} width={18} height={20} />,
+    title: "Orders",
+    roles: ["user", "admin"],
+  },
+  {
     path: "/services",
     icon: <Image src={"/images/users_icon.svg"} width={12} height={12} />,
     title: "Services",

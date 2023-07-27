@@ -13,12 +13,12 @@ const Index = () => {
   const [selectedRows, setSelectedRows] = useState([]);
   const currentDateAndTime = new Date();
   const options = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
   };
   let formattedDateTime = currentDateAndTime.toLocaleString("en-US", options);
   formattedDateTime = formattedDateTime.replace(" at", "");
@@ -269,7 +269,7 @@ const Index = () => {
   //     itemsInStock: 10,
   //   },
   // ];
-  const products =[
+  const products = [
     {
       id: 1,
       name: "Product Name",
@@ -279,7 +279,7 @@ const Index = () => {
       Price: "$778",
       category: "Engine",
       statistics: "Best Seller",
-      date: "12/07/23"
+      date: "12/07/23",
     },
     {
       id: 2,
@@ -290,7 +290,7 @@ const Index = () => {
       Price: "$778",
       category: "Engine",
       statistics: "Best Seller",
-      date: "12/07/23"
+      date: "12/07/23",
     },
     {
       id: 3,
@@ -301,7 +301,7 @@ const Index = () => {
       Price: "$778",
       category: "Engine",
       statistics: "Best Seller",
-      date: "12/07/23"
+      date: "12/07/23",
     },
     {
       id: 4,
@@ -312,7 +312,7 @@ const Index = () => {
       Price: "$778",
       category: "Engine",
       statistics: "Best Seller",
-      date: "12/07/23"
+      date: "12/07/23",
     },
     {
       id: 5,
@@ -323,7 +323,7 @@ const Index = () => {
       Price: "$778",
       category: "Engine",
       statistics: "Best Seller",
-      date: "12/07/23"
+      date: "12/07/23",
     },
     {
       id: 6,
@@ -334,7 +334,7 @@ const Index = () => {
       Price: "$778",
       category: "Engine",
       statistics: "Best Seller",
-      date: "12/07/23"
+      date: "12/07/23",
     },
     {
       id: 7,
@@ -345,7 +345,7 @@ const Index = () => {
       Price: "$778",
       category: "Engine",
       statistics: "Best Seller",
-      date: "12/07/23"
+      date: "12/07/23",
     },
     {
       id: 8,
@@ -356,7 +356,7 @@ const Index = () => {
       Price: "$778",
       category: "Engine",
       statistics: "Best Seller",
-      date: "12/07/23"
+      date: "12/07/23",
     },
     {
       id: 9,
@@ -367,9 +367,9 @@ const Index = () => {
       Price: "$778",
       category: "Engine",
       statistics: "Best Seller",
-      date: "12/07/23"
+      date: "12/07/23",
     },
-  ]
+  ];
 
   return (
     <div className="w-full bg-[F9F9F9]">
@@ -377,31 +377,38 @@ const Index = () => {
         <title>Products</title>
       </Head>
       <div className="h-full w-full bg-[#F9F9F9] my-4">
-
-      <div className="flex justify-between mx-[2rem] bg-[#FFFFFF] rounded-md shadow-md px-4 py-4">
-                    <div>
-                        <h1 className="text-[24px] font-[600]">Product Management</h1>
-                    </div>
-                    <div className="flex items-center">
-                        <div className="flex mr-3">
-                            <p className="text-xs mr-2">Data Refreshed</p>
-                            <Image src="/images/refresh.svg"
-                                width={15}
-                                height={15}
-                                alt="Refresh Icon"/>
-                        </div>
-                        <div className="bg-[#F0F5FB] border rounded-md border-[#0852C12B] px-3 py-3 text-xs font-medium">
-                            <p>{formattedDateTime}</p>
-                        </div>
-                    </div>
-                </div>
+        <div className="flex justify-between mx-[2rem] bg-[#FFFFFF] rounded-md shadow-md px-4 py-4">
+          <div>
+            <h1 className="text-[24px] font-[600]">Product Management</h1>
+          </div>
+          <div className="flex items-center">
+            <div className="flex mr-3">
+              <p className="text-xs mr-2">Data Refreshed</p>
+              <Image
+                src="/images/refresh.svg"
+                width={15}
+                height={15}
+                alt="Refresh Icon"
+              />
+            </div>
+            <div className="bg-[#F0F5FB] border rounded-md border-[#0852C12B] px-3 py-3 text-xs font-medium">
+              <p>{formattedDateTime}</p>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <div className="flex justify-between mx-[2rem] my-4 bg-[#F9F9F9]">
+      <div className="flex justify-between mx-[2rem] my-4 ">
         {/* First div with two buttons */}
         <div className="flex">
           <button className="bg-[#0852C1] text-white font-medium px-4 py-2 rounded-md mr-2 flex flex-row-reverse items-center transition-colors duration-300 hover:bg-[#0E71EB]">
-            <Image src="/images/addProduct.svg" width={16} height={16} alt="Add Product" className="ml-2" />
+            <Image
+              src="/images/addProduct.svg"
+              width={16}
+              height={16}
+              alt="Add Product"
+              className="ml-2"
+            />
             Add New Product
           </button>
           <button className="text-[#0852C1] font-medium px-4 py-1 rounded-md border-2 border-[#0852C1] transition-colors duration-300 hover:text-white hover:bg-[#0852C1]">
@@ -417,47 +424,57 @@ const Index = () => {
               placeholder="Search"
               className="py-2  pl-2 pr-4 rounded-md bg-[#EBEFF6] border border-[#0852C12B] text-black text-base focus:outline-none transition-all duration-300"
             />
-            <Image src="/images/searchIcon.svg" width={16} height={16} alt="Search" className="absolute right-3 top-3" />
+            <Image
+              src="/images/searchIcon.svg"
+              width={16}
+              height={16}
+              alt="Search"
+              className="absolute right-3 top-3"
+            />
           </div>
         </div>
       </div>
 
-      <div className="flex justify-between items-center px-4 bg-[#F9F9F9]">
-      <div className="flex text-[16px] mx-2">
-        <p className="mr-2">Products:</p>{" "}<p className="mr-2">All ({products.length})</p>{" | "}
-        <p className="text-[#0852C1] mx-2">Published</p><p>(1,766)</p>
-        <p className="text-[#0852C1] mx-2">Draft</p><p>(87)</p>
-      </div>
-      <div className="flex">
-      <div className="text-[14px] font-[500] flex bg-[#FFFFFF] border border-[#0852C12B] items-center px-2 rounded-md my-1 mx-2">
-                            Sort by:
-                            <div className="relative text-left ml-1">
-                                <select className="py-2 text-sm font-medium bg-transparent w-[100px] focus:outline-none">
-                                    <option value="bestSeller">Best Seller</option>
-                                    <option value="priceLowToHigh">Price: Low to High</option>
-                                    <option value="priceHighToLow">Price: High to Low</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div className="text-[14px] font-[500] flex bg-[#FFFFFF] border border-[#0852C12B] items-center px-2 rounded-md my-1 mx-2">
-                            <div className="relative text-left ml-2">
-                                <select className="py-2 text-sm font-medium bg-transparent  focus:outline-none">
-                                    <option value="bestSeller">Product Category</option>
-                                    <option value="priceLowToHigh">Engine</option>
-                                </select>
-                            </div>
-                        </div>
-                        </div>
+      <div className="flex justify-between items-center px-4 ">
+        <div className="flex text-[16px] mx-4">
+          <p className="mr-2">Products:</p>{" "}
+          <p className="mr-2">All ({products.length})</p>
+          {" | "}
+          <p className="text-[#0852C1] mx-2">Published</p>
+          <p>(1,766)</p>
+          <p className="text-[#0852C1] mx-2">Draft</p>
+          <p>(87)</p>
+        </div>
+        <div className="flex">
+          <div className="text-[14px] font-[500] flex bg-[#FFFFFF] border border-[#0852C12B] items-center px-2 rounded-md my-1 mx-2">
+            Sort by:
+            <div className="relative text-left ml-1">
+              <select className="py-2 text-sm font-medium bg-transparent w-[100px] focus:outline-none">
+                <option value="bestSeller">Best Seller</option>
+                <option value="priceLowToHigh">Price: Low to High</option>
+                <option value="priceHighToLow">Price: High to Low</option>
+              </select>
+            </div>
+          </div>
+          <div className="text-[14px] font-[500] flex bg-[#FFFFFF] border border-[#0852C12B] items-center px-2 rounded-md my-1 mx-2">
+            <div className="relative text-left ml-2">
+              <select className="py-2 text-sm font-medium bg-transparent  focus:outline-none">
+                <option value="bestSeller">Product Category</option>
+                <option value="priceLowToHigh">Engine</option>
+              </select>
+            </div>
+          </div>
+        </div>
       </div>
       <div>
         {/* Table */}
         <div className="w-full overflow-x-auto px-4 py-4">
           <table className="w-full">
             {/* Table headers */}
-            <thead className="rounded-lg shadow-md my-3" >
+            <thead className="rounded-lg shadow-md my-3">
               <tr className="text-[#0852C1] rounded-lg shadow-md bg-[#FFFFFF] text-left px-4 py-4">
                 <th className="w-0 "></th>
-                <th className="w-1/4 px-3 py-8 ">Products Name</th>
+                <th className="w-1/4 px-3 py-6 ">Products Name</th>
                 <th className="w-1/12 px-3 py-4 mx-2">SKU</th>
                 <th className="w-1/12">Stock</th>
                 <th className="w-1/12">Price</th>
@@ -477,7 +494,11 @@ const Index = () => {
                     selectedRows.includes(product.id)
                       ? "bg-blue-100 shadow-lg"
                       : ""
-                  } ${product.id % 2 === 0 ? "bg-white shadow-md my-4 hover:bg-blue-100" : "bg-[#F9F9F9] hover:bg-blue-200"}`}
+                  } ${
+                    product.id % 2 === 0
+                      ? "bg-white shadow-md my-4 hover:bg-blue-100"
+                      : "hover:bg-blue-200"
+                  }`}
                 >
                   {/* Checkbox column */}
                   <td className="text-center">
@@ -487,13 +508,35 @@ const Index = () => {
                       onChange={() => toggleRowSelection(product.id)}
                     />
                   </td>
-                  <td className="font-[500] py-8 my-4">{product.name}</td>
-                  <td className="text-[#777777] font-[400] text-[14px]">{product.sku}</td>
-                  <td className="text-[#777777] font-[400] text-[14px]">{product.stock}</td>
-                  <td className="text-[#777777] font-[400] text-[14px]">{product.Price}</td>
-                  <td className="text-[#0852C1] font-[400] text-[14px]" >{product.category}</td>
-                  <td className="text-[#777777] font-[400] text-[14px]">{product.statistics}</td>
-                  <td className="text-center">
+                  <td className="font-[500] p-6">
+                    <div className="flex items-center">
+                      <div className="rounded-lg overflow-hidden mr-4">
+                        <Image
+                          src={product.image}
+                          width={40}
+                          height={40}
+                          alt="Product Image"
+                        />
+                      </div>
+                      {product.name}
+                    </div>
+                  </td>
+                  <td className="text-[#777777] font-[400] text-[14px]">
+                    {product.sku}
+                  </td>
+                  <td className="text-[#777777] font-[400] text-[14px]">
+                    {product.stock}
+                  </td>
+                  <td className="text-[#777777] font-[400] text-[14px]">
+                    {product.Price}
+                  </td>
+                  <td className="text-[#0852C1] font-[400] text-[14px]">
+                    {product.category}
+                  </td>
+                  <td className="text-[#777777] font-[400] text-[14px]">
+                    {product.statistics}
+                  </td>
+                  <td className="flex justify-center items-center">
                     <Image
                       src="/images/start.svg"
                       width={16}
@@ -501,9 +544,12 @@ const Index = () => {
                       alt="Rating"
                     />
                   </td>
-                  <td className="text-[#777777] font-[400] text-[14px]"><p>Last Modified</p>{product.date}</td>
+                  <td className="text-[#777777] font-[400] text-[14px]">
+                    <p>Last Modified</p>
+                    {product.date}
+                  </td>
                   <td className="flex justify-around items-center">
-                    <button>
+                    <button className="flex items-center w-60px my-3">
                       <Image
                         src="/images/edit.svg"
                         width={16}
@@ -511,11 +557,11 @@ const Index = () => {
                         alt="Edit"
                       />
                     </button>
-                    <button>
+                    <button className="w-[50px] flex items-center justify-center my-6">
                       <Image
                         src="/images/more.svg"
-                        width={5}
-                        height={5}
+                        width={3}
+                        height={3}
                         alt="Delete"
                       />
                     </button>
@@ -525,7 +571,7 @@ const Index = () => {
             </tbody>
           </table>
         </div>
-        </div>
+      </div>
       {showProductModal && (
         <ProductModal
           show={showProductModal}

@@ -33,9 +33,6 @@
 } */
 
 
-table {
-  background-color: #fafbff;
-}
 
 
 .ant-table-thead tr th::before {
@@ -70,7 +67,7 @@ table {
 .sidebar {
   overflow-y: auto;
   max-height: 80vh !important;
-  color: black;
+  color: white;
   /* padding-bottom: 1rem !important; */
 }
 
