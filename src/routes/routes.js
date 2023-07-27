@@ -110,9 +110,9 @@ const routes = [
     roles: ["user", "admin"],
   },
   {
-    path: "/history",
+    path: "/orderhistory",
     icon: <Image src={"/images/settings_icon.svg"} width={14} height={14} />,
-    title: "History",
+    title: "Order History",
     roles: ["user", "admin"],
   },
     {
