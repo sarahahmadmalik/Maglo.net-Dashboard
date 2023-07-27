@@ -98,9 +98,9 @@ const Index = () => {
         <title>Account Settings</title>
       </Head>
       <div className="h-full w-full bg-[#F9F9F9] my-4 overflow-hidden">
-        <div className="flex smd:flex-row flex-col smd:justify-between mx-[2rem] bg-[#FFFFFF] rounded-md shadow-md px-4 py-4">
+        <div className="flex md:flex-row flex-col md:justify-between mx-[2rem] bg-[#FFFFFF] rounded-md shadow-md px-4 py-4">
           <div>
-            <h1 className="smd:text-[24px] text-lg font-[600]">Account Settings</h1>
+            <h1 className="md:text-[24px] text-lg font-[600]">Account Settings</h1>
           </div>
           <div className=" items-center hidden smd:flex">
             <div className="flex mr-3">
@@ -117,9 +117,9 @@ const Index = () => {
             </div>
           </div>
         </div>
-        <div className="w-full h-full flex smd:flex-row flex-col items-center smd:justify-start my-5 smd:mx-8 ">
+        <div className="w-full h-full flex md:flex-row flex-col items-center md:justify-start my-5 md:mx-8 ">
 <div className=" flex flex-col">
-  <div className="flex flex-col items-center bg-[#FFFFFF] shadow-lg rounded-md px-3 py-5  smd:w-[260px]">
+  <div className="flex flex-col items-center bg-[#FFFFFF] shadow-lg rounded-md px-3 py-5  md:w-[260px]">
     <div className="flex items-center justify-center mt-1">
       <div className="w-30 h-30 rounded-full  overflow-hidden">
         <Image
@@ -191,11 +191,11 @@ const Index = () => {
 </div>
 
   </div>
-  <div className="smd:w-full smd:flex md:justify-center my-5 mx-4 smd:mx-8 lg:mx-10 gap-4">
-          <div className="w-full smd:w-[68%] bg-[#FFFFFF] shadow-lg rounded-md px-6 py-5">
+  <div className="md:w-full md:flex  my-5 mx-4 md:mx-5 lg:mx-10 gap-4">
+          <div className="w-full lg:w-[68%] bg-[#FFFFFF] shadow-lg rounded-md px-6 py-5">
             <h2 className="font-semibold text-[18px]">{admin.name}</h2>
             <form className="my-3" onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 smd:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="firstName" className="text-[16px] font-normal text-[#777777]">
                     First Name
