@@ -1,3 +1,4 @@
+"use client"
 import ProductModal from "@/components/Products/ProductModal";
 import SellerCard from '../../components/Seller/SellerCard'
 import Head from "next/head";
@@ -185,7 +186,7 @@ const Index = () => {
                     <div>
                         <h1 className="text-[24px] font-[600]">Seller</h1>
                     </div>
-                    <div className="flex items-center">
+                    <div className="md:flex items-center hidden">
                         <div className="flex mr-3">
                             <p className="text-xs mr-2">Data Refreshed</p>
                             <Image src="/images/refresh.svg"
@@ -198,7 +199,7 @@ const Index = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-row justify-between mx-[2rem] my-4">
+                <div className="flex md:flex-row flex-col justify-between mx-[2rem] my-4">
                     <div className="flex flex-col">
                         <div className="text-[16px] font-[600]">Sales Period:</div>
                         <div className="bg-transparent flex border border-[#0852C12B] rounded-md py-1 px-2 my-1">

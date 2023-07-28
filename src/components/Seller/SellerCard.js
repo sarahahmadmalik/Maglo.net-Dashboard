@@ -18,18 +18,18 @@ const SellerCard = ({ seller }) => {
 
   return (
     <div className="shadow-lg rounded-md p-4 border border-[#F9F9F9]">
-      <div className="flex items-start justify-between">
-        <div className="flex items-center space-x-4">
-          <div className="w-90 h-90 rounded-md overflow-hidden">
+      <div className="flex md:flex-row flex-col items-start md:justify-between overflow-hidden">
+        <div className="flex items-start mditems-center space-x-4">
+          <div className="md:w-90 md:h-90 rounded-md overflow-hidden border border-red-400">
             <Image src={seller.image} width={110} height={110} alt={seller.name} />
           </div>
           <div className="flex flex-col">
-            <p className="text-lg font-semibold">{seller.name}</p>
+            <p className="md:text-lg text-base font-semibold">{seller.name}</p>
             <p className="text-sm">{seller.address}</p>
             <p className="text-sm my-2">{seller.phone}</p>
             <p className="text-sm  mb-2">{seller.email}</p>
         <div className="flex flex-col justify-center space-x-1">
-        <p className="font-[600] text-[18px]">Reviews</p>
+        <p className="font-[600] md:text-[18px] text-base">Reviews</p>
         <div className="flex">
           {Array.from({ length: Number(seller.reviews) }).map((_, index) => (
             <Image
@@ -45,11 +45,12 @@ const SellerCard = ({ seller }) => {
         
           </div>
         </div>
-           <div className="">
-        <h2 className="text-lg font-semibold">Statistics</h2>
-        <div className="flex items-center space-x-2">
+        <div className="py-2 md:py-0">
+        <h2 className="text-lg font-semibold hidden md:block">Statistics</h2>
+        <div className="flex flex-row md:flex-col">
+        <div className="flex  items-center space-x-2">
           <div
-            className="w-[58px] h-[50px] bg-[#0852C1] rounded-md flex items-center justify-center"
+            className="w-[58px] h-[50px] bg-[#0852C1] rounded-md flex items-center justify-center py-3 px-3"
           >
             <Image
               src="/images/newOrders.svg"
@@ -59,15 +60,15 @@ const SellerCard = ({ seller }) => {
             />
           </div>
           <div>
-          <p className="font-[600] text-[18px]">{seller.statistics.newOrders} </p>
-          <p className="font-[400] text-[16px]">User Orders</p>
+          <p className="font-[600] md:text-[18px] text-base">{seller.statistics.newOrders} </p>
+          <p className="font-[400] md:text-[16px] text-sm">User Orders</p>
           </div>
           
         </div>
 
          <div className="flex items-center space-x-2 mt-2">
           <div
-            className="w-[58px] h-[50px] bg-[#EE54BA] rounded-md flex items-center justify-center"
+            className="md:w-[58px] md:h-[50px] h-[50px] w-[50px] bg-[#EE54BA] rounded-md flex items-center justify-center"
           >
             <Image
               src="/images/income.svg"
@@ -77,13 +78,14 @@ const SellerCard = ({ seller }) => {
             />
           </div>
           <div>
-          <p className="font-[600] text-[18px]">{seller.statistics.income} </p>
-          <p className="font-[400] text-[16px]">Income</p>
+          <p className="font-[600] md:text-[18px] text-base">{seller.statistics.income} </p>
+          <p className="font-[400] md:text-[16px] text-sm">Income</p>
           </div>
           
         </div>
       </div>
-        <div className="relative">
+      </div>
+        <div className="relative hidden md:block">
           <button
             className="p-1 rounded-md hover:bg-gray-200"
             onClick={handleActionsToggle}

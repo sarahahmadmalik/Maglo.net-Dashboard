@@ -1,6 +1,7 @@
 import ProductModal from "@/components/Products/ProductModal";
 // import categoryApi from "@/lib/category";
 // import productApi from "@/lib/product";
+"use client"
 import { useQuery } from "@tanstack/react-query";
 
 import Head from "next/head";

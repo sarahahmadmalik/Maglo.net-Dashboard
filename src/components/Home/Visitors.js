@@ -81,7 +81,7 @@ const Visitors = () => {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center p-4 rounded-md bg-[#FFFFFF] shadow-md my-4 w-[60%]">
+    <div className="w-full flex flex-col justify-center p-4 rounded-md bg-[#FFFFFF] shadow-md my-4 md:w-[60%]">
       <h1 className="text-xl font-[700]">Visitors</h1>
       <div className="relative h-48 w-full flex flex-wrap">
         <canvas ref={chartRef} width={200} height={200} />

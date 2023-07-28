@@ -381,7 +381,7 @@ const Index = () => {
           <div>
             <h1 className="text-[24px] font-[600]">Product Management</h1>
           </div>
-          <div className="flex items-center">
+          <div className="items-center hidden md:flex">
             <div className="flex mr-3">
               <p className="text-xs mr-2">Data Refreshed</p>
               <Image
@@ -398,10 +398,10 @@ const Index = () => {
         </div>
       </div>
 
-      <div className="flex justify-between mx-[2rem] my-4 ">
+      <div className="flex flex-col md:flex-row justify-between mx-[2rem] my-4 ">
         {/* First div with two buttons */}
         <div className="flex">
-          <button className="bg-[#0852C1] text-white font-medium px-4 py-2 rounded-md mr-2 flex flex-row-reverse items-center transition-colors duration-300 hover:bg-[#0E71EB]">
+          <button className="bg-[#0852C1] text-white text-xs md:text-base font-medium px-4 py-2 rounded-md mr-2 flex flex-row-reverse items-center transition-colors duration-300 hover:bg-[#0E71EB]">
             <Image
               src="/images/addProduct.svg"
               width={16}
@@ -411,13 +411,13 @@ const Index = () => {
             />
             Add New Product
           </button>
-          <button className="text-[#0852C1] font-medium px-4 py-1 rounded-md border-2 border-[#0852C1] transition-colors duration-300 hover:text-white hover:bg-[#0852C1]">
+          <button className="text-[#0852C1] text-xs md:text-base font-medium px-4 py-1 rounded-md border-2 border-[#0852C1] transition-colors duration-300 hover:text-white hover:bg-[#0852C1]">
             Export
           </button>
         </div>
 
         {/* Second div with search bar */}
-        <div className="flex items-center">
+        <div className="flex items-center my-3 sm:my-0">
           <div className="relative">
             <input
               type="text"
@@ -435,17 +435,21 @@ const Index = () => {
         </div>
       </div>
 
-      <div className="flex justify-between items-center px-4 ">
-        <div className="flex text-[16px] mx-4">
+      <div className=" flex flex-col md:flex-row justify-between items-center px-4 ">
+        <div className="flex flex-col sm:flex-row text-sm  md:text-[16px] mx-4">
+          <div className="flex">
           <p className="mr-2">Products:</p>{" "}
           <p className="mr-2">All ({products.length})</p>
-          {" | "}
-          <p className="text-[#0852C1] mx-2">Published</p>
+          <p className="hidden sm:block">  {" | "}</p>
+          </div>
+        <div className="flex">
+          <p className="text-[#0852C1] sm:mx-2">Published</p>
           <p>(1,766)</p>
           <p className="text-[#0852C1] mx-2">Draft</p>
           <p>(87)</p>
+          </div>
         </div>
-        <div className="flex">
+        <div className="flex flex-col md:flex-row">
           <div className="text-[14px] font-[500] flex bg-[#FFFFFF] border border-[#0852C12B] items-center px-2 rounded-md my-1 mx-2">
             Sort by:
             <div className="relative text-left ml-1">
@@ -469,15 +473,15 @@ const Index = () => {
       <div>
         {/* Table */}
         <div className="w-full overflow-x-auto px-4 py-4">
-          <table className="w-full">
+          <table className="w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto">
             {/* Table headers */}
             <thead className="rounded-lg shadow-md my-3">
-              <tr className="text-[#0852C1] rounded-lg shadow-md bg-[#FFFFFF] text-left px-4 py-4">
+              <tr className="text-[#0852C1] rounded-lg shadow-md bg-[#FFFFFF] text-left text-xs md:text-base px-4 py-4">
                 <th className="w-0 "></th>
                 <th className="w-1/4 px-3 py-6 ">Products Name</th>
                 <th className="w-1/12 px-3 py-4 mx-2">SKU</th>
                 <th className="w-1/12">Stock</th>
-                <th className="w-1/12">Price</th>
+                <th className="md:w-1/12 w-1/8">Price</th>
                 <th className="w-1/12">Category</th>
                 <th className="w-1/12">Statistics</th>
                 <th className="w-1/12 text-center">Rate</th>
@@ -490,7 +494,7 @@ const Index = () => {
               {products.map((product) => (
                 <tr
                   key={product.id}
-                  className={`hover:bg-blue-100 py-4 ${
+                  className={` text-xs hover:bg-blue-100 py-4 ${
                     selectedRows.includes(product.id)
                       ? "bg-blue-100 shadow-lg"
                       : ""
@@ -508,7 +512,7 @@ const Index = () => {
                       onChange={() => toggleRowSelection(product.id)}
                     />
                   </td>
-                  <td className="font-[500] p-6">
+                  <td className="font-[500] p-6 text-xs md:text-base">
                     <div className="flex items-center">
                       <div className="rounded-lg overflow-hidden mr-4">
                         <Image
@@ -521,19 +525,19 @@ const Index = () => {
                       {product.name}
                     </div>
                   </td>
-                  <td className="text-[#777777] font-[400] text-[14px]">
+                  <td className="text-[#777777] font-[400] md:text-[14px] text-xs">
                     {product.sku}
                   </td>
-                  <td className="text-[#777777] font-[400] text-[14px]">
+                  <td className="text-[#777777] font-[400] md:text-[14px] text-xs">
                     {product.stock}
                   </td>
-                  <td className="text-[#777777] font-[400] text-[14px]">
+                  <td className="text-[#777777] font-[400] md:text-[14px] text-xs">
                     {product.Price}
                   </td>
-                  <td className="text-[#0852C1] font-[400] text-[14px]">
+                  <td className="text-[#0852C1] font-[400] md:text-[14px] text-xs">
                     {product.category}
                   </td>
-                  <td className="text-[#777777] font-[400] text-[14px]">
+                  <td className="text-[#777777] font-[400] md:text-[14px] text-xs">
                     {product.statistics}
                   </td>
                   <td className="flex justify-center items-center">
@@ -544,7 +548,7 @@ const Index = () => {
                       alt="Rating"
                     />
                   </td>
-                  <td className="text-[#777777] font-[400] text-[14px]">
+                  <td className="text-[#777777] font-[400] md:text-[14px] text-xs">
                     <p>Last Modified</p>
                     {product.date}
                   </td>

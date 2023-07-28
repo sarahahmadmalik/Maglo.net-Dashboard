@@ -1,4 +1,4 @@
-
+"use client"
 import Head from "next/head";
 import Image from "next/image";
 import { toast } from "react-toastify";
@@ -191,8 +191,8 @@ const Index = () => {
 </div>
 
   </div>
-  <div className="md:w-full md:flex  my-5 mx-4 md:mx-5 lg:mx-10 gap-4">
-          <div className="w-full lg:w-[68%] bg-[#FFFFFF] shadow-lg rounded-md px-6 py-5">
+  <div className="md:w-full md:flex  my-5 mx-4 md:mx-6 lg:mx-10 gap-4">
+          <div className="w-full  bg-[#FFFFFF] shadow-lg rounded-md px-6 py-5">
             <h2 className="font-semibold text-[18px]">{admin.name}</h2>
             <form className="my-3" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

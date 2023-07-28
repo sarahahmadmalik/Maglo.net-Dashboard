@@ -4,45 +4,45 @@ import { Button, Form, Input, Modal, notification } from "antd";
 
 const CategoryModal = (props) => {
   console.log("category", props.data);
-  const queryClient = useQueryClient();
-  const addMutation = useMutation(
-    ["categories"],
-    async (data) => {
-      await categoryApi.addCategory(data);
-    },
-    {
-      onError: (data) => {},
-      onSuccess: () => {
-        notification.open({
-          type: "success",
-          message: "Category saved successfully",
-          placement: "top",
-        });
-        queryClient.invalidateQueries(["categories"]);
-        props.close();
-      },
-    }
-  );
+  // const queryClient = useQueryClient();
+  // const addMutation = useMutation(
+  //   ["categories"],
+  //   async (data) => {
+  //     await categoryApi.addCategory(data);
+  //   },
+  //   {
+  //     onError: (data) => {},
+  //     onSuccess: () => {
+  //       notification.open({
+  //         type: "success",
+  //         message: "Category saved successfully",
+  //         placement: "top",
+  //       });
+  //       queryClient.invalidateQueries(["categories"]);
+  //       props.close();
+  //     },
+  //   }
+  // );
 
-  const updateMutation = useMutation(
-    ["categories"],
-    async ({ id, category }) => {
-      await categoryApi.updateCategory(id, category);
-    },
-    {
-      onError: (data) => {},
-      onSuccess: () => {
-        notification.open({
-          type: "success",
-          message: "Category updated successfully",
-          placement: "top",
-        });
-        queryClient.invalidateQueries(["categories"]);
-        props.setData(null);
-        props.close();
-      },
-    }
-  );
+  // const updateMutation = useMutation(
+  //   ["categories"],
+  //   async ({ id, category }) => {
+  //     await categoryApi.updateCategory(id, category);
+  //   },
+  //   {
+  //     onError: (data) => {},
+  //     onSuccess: () => {
+  //       notification.open({
+  //         type: "success",
+  //         message: "Category updated successfully",
+  //         placement: "top",
+  //       });
+  //       queryClient.invalidateQueries(["categories"]);
+  //       props.setData(null);
+  //       props.close();
+  //     },
+  //   }
+  // );
 
   const handleSubmit = (values) => {
     console.log("values", values);

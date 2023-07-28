@@ -103,12 +103,7 @@ const routes = [
     title: "Orders",
     roles: ["user", "admin"],
   },
-  {
-    path: "/services",
-    icon: <Image src={"/images/users_icon.svg"} width={12} height={12} />,
-    title: "Services",
-    roles: ["user", "admin"],
-  },
+  
   {
     path: "/orderhistory",
     icon: <Image src={"/images/settings_icon.svg"} width={14} height={14} />,
