@@ -177,9 +177,9 @@ const Index = () => {
         </div>
       </div>
 
-      <div className="flex items-center mx-4">
+      <div className="flex md:flex-row flex-col items-center md:mx-4 ">
         {/* First Box */}
-        <div className="flex flex-col h-[155px] w-[175px] text-center items-center bg-[#FFFFFF] py-4 px-6 rounded-md shadow-md mx-2">
+        <div className="flex flex-col h-[155px] w-[175px] text-center items-center bg-[#FFFFFF] py-4 px-6 rounded-md shadow-md mx-2 my-2 md:my-0">
           <div className="relative">
             <Image
               src="/images/Start.svg"
@@ -193,26 +193,26 @@ const Index = () => {
         </div>
 
         {/* Second Box */}
-        <div className="flex flex-col h-[155px] w-[175px] items-center bg-[#FFFFFF] text-center py-4 px-6 rounded-md shadow-md mx-2">
+        <div className="flex flex-col h-[155px] w-[175px] items-center bg-[#FFFFFF] text-center py-4 px-6 rounded-md shadow-md mx-2  my-2 md:my-0">
           <div className="w-10 h-10 bg-[#0852C1] rounded-md"></div>
           <p className="mt-2 text-xl font-bold">567</p>
           <p className="text-sm text-sm font-[600] text-[#000000A8]">Customer Score</p>
         </div>
 
         {/* Third Box */}
-        <div className="flex flex-col h-[155px] w-[175px] items-center bg-[#FFFFFF] text-center py-4 px-6 rounded-md shadow-md mx-2">
+        <div className="flex flex-col h-[155px] w-[175px] items-center bg-[#FFFFFF] text-center py-4 px-6 rounded-md shadow-md mx-2  my-2 md:my-0">
           <div className="w-10 h-10 bg-[#FF5924] rounded-md"></div>
           <p className="mt-2 text-xl font-bold">567</p>
           <p className="text-sm text-sm font-[600] text-[#000000A8]">Customer Score</p>
         </div>
 
         {/* Fourth Box */}
-        <div className="flex flex-col h-[155px] w-[175px] items-center bg-[#FFFFFF] text-center py-4 px-6 rounded-md shadow-md mx-2">
+        <div className="flex flex-col h-[155px] w-[175px] items-center bg-[#FFFFFF] text-center py-4 px-6 rounded-md shadow-md mx-2  my-2 md:my-0">
           <div className="w-10 h-10 bg-[#08C11B] rounded-md"></div>
           <p className="mt-2 text-xl font-bold">567</p>
           <p className="text-sm text-sm font-[600] text-[#000000A8]">Customer Score</p>
         </div>
-        <div className="flex flex-col w-[50%] items-center bg-[#FFFFFF] text-center py-4 px-6 rounded-md shadow-md mx-3">
+        <div className="flex flex-col w-full md:w-[50%] items-center bg-[#FFFFFF] text-center py-4 px-6 rounded-md shadow-md mx-3 my-2 md:my-0">
         <RatingProgressBar label={5} percentage={80} />
       <RatingProgressBar label={4} percentage={60} />
       <RatingProgressBar label={3} percentage={40} />

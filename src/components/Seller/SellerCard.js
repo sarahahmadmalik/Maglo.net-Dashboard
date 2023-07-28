@@ -20,7 +20,7 @@ const SellerCard = ({ seller }) => {
     <div className="shadow-lg rounded-md p-4 border border-[#F9F9F9]">
       <div className="flex md:flex-row flex-col items-start md:justify-between overflow-hidden">
         <div className="flex items-start mditems-center space-x-4">
-          <div className="md:w-90 md:h-90 rounded-md overflow-hidden border border-red-400">
+          <div className="md:w-90 md:h-90 rounded-md overflow-hidden">
             <Image src={seller.image} width={110} height={110} alt={seller.name} />
           </div>
           <div className="flex flex-col">

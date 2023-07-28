@@ -400,7 +400,7 @@ const Index = () => {
           <div>
             <h1 className="text-[24px] font-[600]">Orders</h1>
           </div>
-          <div className="flex items-center">
+          <div className="md:flex items-center hidden ">
             <div className="flex mr-3">
               <p className="text-xs mr-2">Data Refreshed</p>
               <Image
@@ -417,7 +417,7 @@ const Index = () => {
         </div>
       </div>
 
-      <div className="flex justify-between items-center px-6 ">
+      <div className="flex md:flex-row md:justify-between  md:items-center px-6 flex-col">
         <div className="flex flex-col mx-3">
           <div className="text-[16px] font-[600]">Sales Period:</div>
           <div className="bg-transparent flex border border-[#0852C12B] rounded-md py-1 px-2 my-1">
@@ -430,7 +430,7 @@ const Index = () => {
             />
           </div>
         </div>
-        <div className="flex">
+        <div className="flex md:flex-row flex-col">
           <div className="text-[14px] font-[500] flex bg-[#FFFFFF] border border-[#0852C12B] items-center px-2 rounded-md my-1 mx-2">
             Sort by:
             <div className="relative text-left ml-1">
@@ -458,14 +458,14 @@ const Index = () => {
             {/* Table headers */}
             <thead className="rounded-[10px] shadow-md my-3">
               <tr className="text-[#0852C1] rounded-[10px] shadow-md bg-[#FFFFFF] text-left px-4 py-4">
-                <th className="w-[70px] px-2"></th>
-                <th className=" px-3 py-6 ">Products Name</th>
-                <th className="w-1/8 px-3 py-4 mx-2">SKU</th>
-                <th className="w-1/8">Category</th>
-                <th className="w-1/8">Payment</th>
-                <th className="w-1/12">Order Status</th>
-                <th className="w-1/8 text-center">Rate</th>
-                <th className="w-1/12">Actions</th>
+                <th className="w-[70px] px-2 text-sm md:text-base"></th>
+                <th className=" px-3 py-6 text-sm md:text-base">Products Name</th>
+                <th className="w-1/8 px-3 py-4 mx-2 text-sm md:text-base">SKU</th>
+                <th className="w-1/8 text-sm md:text-base">Category</th>
+                <th className="w-1/8 text-sm md:text-base">Payment</th>
+                <th className="w-1/12 text-sm md:text-base">Order Status</th>
+                <th className="w-1/8 text-center md:text-base text-sm">Rate</th>
+                <th className="w-1/12 text-sm md:text-base">Actions</th>
               </tr>
             </thead>
             {/* Table body */}
