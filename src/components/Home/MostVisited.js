@@ -70,7 +70,7 @@ const MostVisited = () => {
   }, []);
 
   return (
-    <div className="w-full flex flex-col p-4 rounded-md bg-[#FFFFFF] shadow-md my-4 mx-3 md:w-[40%]">
+    <div className="w-full flex flex-col p-4 rounded-md bg-[#FFFFFF] shadow-md my-4 mx-3 md:w-[40%] ">
       <h1 className="md:text-xl text-medium font-[700]">Most Visited Customers</h1>
       <div className="relative h-48 w-full flex">
         <canvas ref={chartRef} width={200} height={200} />

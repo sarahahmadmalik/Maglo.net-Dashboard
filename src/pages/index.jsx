@@ -8,19 +8,22 @@ import Stats from '../components/Home/Stats'
 import ProfitPerformance from '../components/Home/ProfitPerformance'
 import Visitors from '../components/Home/Visitors'
 import MostVisited from '../components/Home/MostVisited'
-
+import { useState, useEffect } from "react";
 const Index = () => {
-  const currentDateAndTime = new Date();
-  const options = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    hour12: true,
-  };
-  let formattedDateTime = currentDateAndTime.toLocaleString("en-US", options);
-  formattedDateTime = formattedDateTime.replace(" at", "");
+  const [formattedDateTime, setFormattedDateTime] = useState("");
+  useEffect(() => {
+    const currentDateAndTime = new Date();
+    const options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true
+    };
+    const newFormattedDateTime = currentDateAndTime.toLocaleString("en-US", options);
+    setFormattedDateTime(newFormattedDateTime.replace(" at", ""));
+  }, []);
 
 
   const data = [
@@ -93,8 +96,8 @@ const Index = () => {
               </div>
             </div>
 
-            <div>
-              <div className="flex md:flex-row flex-col md:justify-start justify-center md:items-start md:mx-[2rem]">
+            <div className="">
+              <div className="flex md:flex-row flex-col md:justify-start justify-center  md:items-start md:mx-[2rem]">
               <ConversationRate/>
               <Stats/>
               <ProfitPerformance/>

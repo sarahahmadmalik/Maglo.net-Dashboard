@@ -3,23 +3,25 @@
 import Head from "next/head";
 import Image from "next/image";
 import RatingProgressBar from '../../components/ratings/RatingProgressBar'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ReviewTable from '../../components/ratings/ReviewTable'
 
 const Index = () => {
+  const [formattedDateTime, setFormattedDateTime] = useState("");
+  useEffect(() => {
+    const currentDateAndTime = new Date();
+    const options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true
+    };
+    const newFormattedDateTime = currentDateAndTime.toLocaleString("en-US", options);
+    setFormattedDateTime(newFormattedDateTime.replace(" at", ""));
+  }, []);
 
-  const currentDateAndTime = new Date();
-  const options = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    hour12: true,
-  };
-  
-  let formattedDateTime = currentDateAndTime.toLocaleString("en-US", options);
-  formattedDateTime = formattedDateTime.replace(" at", "");
   const toggleRowSelection = (productId) => {
     setSelectedRows((prevSelectedRows) => {
       if (prevSelectedRows.includes(productId)) {

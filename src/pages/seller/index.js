@@ -5,7 +5,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { Modal } from "antd";
 import { Button } from 'antd';
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 const Index = () => {
     
@@ -111,6 +111,7 @@ const Index = () => {
             }
         },
     ]
+    const [formattedDateTime, setFormattedDateTime] = useState("");
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [showEditModal, setShowEditModal] = useState(false);
     const [sellers, setSellers] = useState(sellersArray);
@@ -193,18 +194,19 @@ const Index = () => {
 
       
 
-    const currentDateAndTime = new Date();
-    const options = {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-        hour12: true
-    };
-    let formattedDateTime = currentDateAndTime.toLocaleString("en-US", options);
-    formattedDateTime = formattedDateTime.replace(" at", "");
-
+      useEffect(() => {
+        const currentDateAndTime = new Date();
+        const options = {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          hour: "numeric",
+          minute: "numeric",
+          hour12: true
+        };
+        const newFormattedDateTime = currentDateAndTime.toLocaleString("en-US", options);
+        setFormattedDateTime(newFormattedDateTime.replace(" at", ""));
+      }, []);
 
 
     const sellersPerPage = 4; 

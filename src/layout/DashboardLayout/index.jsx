@@ -63,7 +63,7 @@ const Index = ({ children }) => {
           <Input
             placeholder="Search"
             className="border border-[#0852C12B] rounded-md px-4 py-2 text-sm sm:text-base focus:outline-none focus:border-blue-500 searchBar w-full"
-            suffix={<SearchOutlined style={{ color: "rgba(0, 0, 0, 0.25)" }} />}
+            suffix={<SearchOutlined style={{ color: "blue" }} />}
           />
         </div>
 
