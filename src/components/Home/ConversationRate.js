@@ -52,7 +52,7 @@ const ConversationRate = () => {
     
   }, [progress]);
   return (
-    <div className="p-4 rounded-md bg-[#FFFFFF] shadow-md my-4 flex md:flex-row flex-col flex-1 items-stretch md:justify-between items-center">
+    <div className="p-4 rounded-md bg-[#FFFFFF] shadow-md my-4 flex md:flex-row flex-col   md:justify-between md:items-center">
       <div>
          <h1 className="text-xl font-bold">Conversation Rate</h1>
         <table className="table-auto mt-4 bg-transparent">
@@ -102,11 +102,12 @@ const ConversationRate = () => {
           </tbody>
         </table>
       </div>
-      <div className="w-full ml-2">
-        {/* React Chart.js PolarArea */}
-        <canvas ref={canvasRef} width={160} height={100}></canvas>
-        {/* Current progress text */}
-        <div className="text-center mt-2 text-[#0852C1] font-bold text-lg">{progress}%</div>
+      <div className=" md:w-full w-40 ml-2 md:my-0 my-5">
+        {/* <div className="relative"> */}
+        <canvas ref={canvasRef} width={100} height={100}></canvas>
+      
+        <div className="text-center md:mt-2 text-[#0852C1] font-bold text-lg">{progress}%</div>
+        {/* </div> */}
       </div>
     </div>
   );

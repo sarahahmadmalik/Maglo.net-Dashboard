@@ -97,13 +97,13 @@ const Index = () => {
             </div>
 
             <div className="">
-              <div className="flex md:flex-row flex-col md:justify-start justify-center  md:items-start md:mx-[2rem]">
+              <div className="flex md:flex-row flex-col md:justify-start justify-center  md:items-start md:mx-[2rem] flex-wrap overflow-hidden">
               <ConversationRate/>
               <Stats/>
               <ProfitPerformance/>
               </div>
 
-              <div  className="flex md:flex-row flex-col md:justify-start justify-center md:items-start md:mx-[2rem]">
+              <div  className="flex md:flex-row flex-col md:justify-start justify-center md:items-start md:mx-[2rem]  overflow-hidden">
                 <Visitors/>
                 <MostVisited/>
               </div>
