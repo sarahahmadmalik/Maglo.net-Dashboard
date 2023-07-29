@@ -17,6 +17,7 @@ const Index = () => {
     minute: "numeric",
     hour12: true,
   };
+  
   let formattedDateTime = currentDateAndTime.toLocaleString("en-US", options);
   formattedDateTime = formattedDateTime.replace(" at", "");
   const toggleRowSelection = (productId) => {

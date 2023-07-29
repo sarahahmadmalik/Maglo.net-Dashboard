@@ -10,6 +10,8 @@ const { Sider } = Layout;
 const Sidebar = ({ role }) => {
   const router = useRouter();
   const [current, setCurrent] = useState(router.pathname);
+  const [collapsed, setCollapsed] = useState(false);
+
   useEffect(() => {
     if (router.pathname) {
       if (current !== router.pathname) {
@@ -18,8 +20,27 @@ const Sidebar = ({ role }) => {
     }
   }, [router, current]);
 
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setCollapsed(window.innerWidth < 768); // Collapse sidebar on smaller devices (breakpoint: 768px)
+    };
+
+    window.addEventListener("resize", handleWindowResize);
+    handleWindowResize(); // Initial check on component mount
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+
   return (
-    <Sider collapsible style={{ paddingTop: "1rem" }}>
+    <Sider
+      collapsible
+      collapsed={collapsed}
+      onCollapse={setCollapsed}
+      collapsedWidth={80} // Set the collapsed width to a value that only shows the logo and icons
+      style={{ paddingTop: "1rem", background: "white" }}
+    >
       <div className="flex items-center justify-center">
         <Image src={"/images/Maglolologo.svg"} width={118} height={48} />
       </div>
@@ -28,7 +49,7 @@ const Sidebar = ({ role }) => {
           marginTop: "2rem",
         }}
         className="sidebar"
-        theme="dark"
+        theme="light" // Set the theme to "light"
         defaultSelectedKeys={[current]}
         onClick={({ key }) => {
           setCurrent(key);

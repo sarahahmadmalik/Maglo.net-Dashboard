@@ -44,11 +44,18 @@
 }
 
 .ant-menu-item.ant-menu-item-selected {
-  background-color: #0852C1 !important;
+  background-color: #F7F7F7 !important;
+  border: 1px solid #D0DDF0 !important;
+  color: black;
 }
 
 .ant-layout-sider-trigger {
-  background-color: #2f9379 !important;
+  background-color: #DFE2F5 !important;
+
+}
+
+.fontFamily{
+  font-family: 'Inter';
 }
 
 /* .ant-layout-sider,
@@ -67,7 +74,7 @@
 .sidebar {
   overflow-y: auto;
   max-height: 80vh !important;
-  color: white;
+  color: black;
   /* padding-bottom: 1rem !important; */
 }
 

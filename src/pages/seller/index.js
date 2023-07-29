@@ -1,36 +1,15 @@
 "use client"
-import ProductModal from "@/components/Products/ProductModal";
+
 import SellerCard from '../../components/Seller/SellerCard'
 import Head from "next/head";
 import Image from "next/image";
-
+import { Modal } from "antd";
+import { Button } from 'antd';
 import {useState} from "react";
 
 const Index = () => {
-    const [showProductModal, setShowProductModal] = useState(false);
-    // const { data, isLoading, isError } = useQuery(
-    //     ["products"],
-    //     async () => {
-    //       const data = await productApi.getProdcuts();
-    //       return data;
-    //     },
-    //     {
-    //       initialData: products,
-    //     }
-    // );
-    const currentDateAndTime = new Date();
-    const options = {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-        hour12: true
-    };
-    let formattedDateTime = currentDateAndTime.toLocaleString("en-US", options);
-    formattedDateTime = formattedDateTime.replace(" at", "");
-
-    const sellers = [
+    
+    const sellersArray = [
         {
             id: 1,
             name: "James Williams",
@@ -132,6 +111,100 @@ const Index = () => {
             }
         },
     ]
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [showEditModal, setShowEditModal] = useState(false);
+    const [sellers, setSellers] = useState(sellersArray);
+    const [seller_id, setSeller_id] = useState("");
+    const [editedSeller, setEditedSeller] = useState({
+        id: null,
+        name: "",
+        image: "",
+        email: "",
+        address: "",
+        phone: "",
+        reviews: "",
+        statistics: {}
+      });
+
+    const handleDeleteConfirmation = () => {
+ 
+        const updatedSellers = sellers.filter((seller) => seller.id !== seller_id);
+        setSellers(updatedSellers);
+        setSeller_id("")
+        
+        setShowDeleteModal(false);
+      };
+    
+      const handleOpenModal = (sellerId) => {
+        console.log(sellerId)
+        setSeller_id(sellerId);
+        setShowDeleteModal(true);
+        
+      };
+    
+      const handleDeleteCancel = () => {
+        setShowDeleteModal(false);
+      };
+
+      const handleEditModal =(sellerId) => {
+        setSeller_id(sellerId)
+        setShowEditModal(true);
+      }
+
+      const handleEditModalCancel = () => {
+        setSeller_id("")
+        setShowEditModal(false)
+      }
+
+      const handleEditModalSave = () => {
+        const updatedSellerFields = {
+            name: editedSeller.name,
+            phone: editedSeller.phone,
+            email: editedSeller.email,
+            address: editedSeller.address,
+          };
+        
+          // Find the index of the editedSeller in the sellers array
+          const editedSellerIndex = sellers.findIndex((seller) => seller.id === seller_id);
+        
+          if (editedSellerIndex !== -1) {
+            // Update only the specified fields of the seller
+            const updatedSellers = sellers.map((seller) =>
+              seller.id === seller_id ? { ...seller, ...updatedSellerFields } : seller
+            );
+            setSellers(updatedSellers);
+          }
+        
+          console.log(sellers);
+      
+        setShowEditModal(false); 
+        setEditedSeller({
+            id: null,
+            name: "",
+            image: "",
+            email: "",
+            address: "",
+            phone: "",
+            reviews: "",
+            statistics: {}
+          })
+        setSeller_id("")
+      };
+
+      
+
+    const currentDateAndTime = new Date();
+    const options = {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true
+    };
+    let formattedDateTime = currentDateAndTime.toLocaleString("en-US", options);
+    formattedDateTime = formattedDateTime.replace(" at", "");
+
 
 
     const sellersPerPage = 4; 
@@ -237,7 +310,7 @@ const Index = () => {
                         <SellerCard key={
                                 seller.id
                             }
-                            seller={seller}/>
+                            seller={seller} onOpenModal={handleOpenModal} onEditModal={handleEditModal}/>
                     ))
                 } </div>
 
@@ -273,14 +346,118 @@ const Index = () => {
 
 
             </div>
+               {/* Delete Seller Modal */}
+               <Modal
+  title="Delete Seller"
+  visible={showDeleteModal}
+  onCancel={handleDeleteCancel}
+  footer={[
+    <Button
+      key="cancel"
+      className="btn-cancel"
+      onClick={handleDeleteCancel}
+    >
+      No
+    </Button>,
+    <Button
+      key="delete"
+      className="btn-delete"
+      type="primary"
+      style={{ backgroundColor: '#F73B3F', borderColor: '#F73B3F' }}
+      onClick={handleDeleteConfirmation}
+    >
+      Yes
+    </Button>,
+  ]}
+>
+  <p>Do you want to delete this seller?</p>
+</Modal>
+<Modal
+  title="Edit Seller"
+  visible={showEditModal}
+  onCancel={handleEditModalCancel}
+  footer={[
+    <Button
+      key="cancel"
+      className="bg-gray-300 text-black hover:bg-gray-400 mr-2"
+      onClick={handleEditModalCancel}
+    >
+      Cancel
+    </Button>,
+    <Button
+      key="save"
+      className="bg-blue-500 text-white hover:bg-blue-600 hover:text-white"
+      onClick={handleEditModalSave}
+    >
+      Save
+    </Button>,
+  ]}
+>
+  <div className="flex flex-col gap-4 p-4">
+    <div className="flex flex-col">
+      <label htmlFor="name" className="text-sm font-semibold mb-1">
+        Name
+      </label>
+      <input
+        id="name"
+        type="text"
+        value={editedSeller.name}
+        onChange={(e) =>
+          setEditedSeller({ ...editedSeller, name: e.target.value })
+        }
+        className="border border-gray-300 p-2 rounded focus:outline-none focus:border-blue-500 transition-all"
+      />
+    </div>
+    <div className="flex flex-col">
+      <label htmlFor="email" className="text-sm font-semibold mb-1">
+        Email
+      </label>
+      <input
+        id="email"
+        type="email"
+        value={editedSeller.email}
+        onChange={(e) =>
+          setEditedSeller({ ...editedSeller, email: e.target.value })
+        }
+        className="border border-gray-300 p-2 rounded focus:outline-none focus:border-blue-500 transition-all"
+      />
+    </div>
+    <div className="flex flex-col">
+      <label htmlFor="address" className="text-sm font-semibold mb-1">
+        Address
+      </label>
+      <input
+        id="address"
+        type="text"
+        value={editedSeller.address}
+        onChange={(e) =>
+          setEditedSeller({ ...editedSeller, address: e.target.value })
+        }
+        className="border border-gray-300 p-2 rounded focus:outline-none focus:border-blue-500 transition-all"
+      />
+    </div>
+    <div className="flex flex-col">
+      <label htmlFor="phone" className="text-sm font-semibold mb-1">
+        Phone
+      </label>
+      <input
+        id="phone"
+        type="text"
+        value={editedSeller.phone}
+        onChange={(e) =>
+          setEditedSeller({ ...editedSeller, phone: e.target.value })
+        }
+        className="border border-gray-300 p-2 rounded focus:outline-none focus:border-blue-500 transition-all"
+      />
+    </div>
+    {/* Add the input fields for the picture here */}
+  </div>
+</Modal>
+
+
         </div>
     );
 };
 
 export default Index;
 
-// export const getServerSideProps = async () => {
-// const categories = await categoryApi.getCategories();
-// const products = await productApi.getProdcuts();
-// return { props: { categories, products } };
-// };

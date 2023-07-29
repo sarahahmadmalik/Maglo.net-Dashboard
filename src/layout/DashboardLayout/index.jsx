@@ -1,4 +1,4 @@
-import { Avatar, Button, Dropdown, Layout, Spin } from "antd";
+
 import Sidebar from "./Sidebar";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { db } from "@/config/firebase";
@@ -7,41 +7,13 @@ import { useRouter } from "next/router";
 import { UserOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import authApi from "@/lib/authApi";
-
+import { Avatar, Button, Dropdown, Input, Layout, Spin } from "antd";
+import { SearchOutlined, BellOutlined } from "@ant-design/icons";
 const { Header, Content } = Layout;
 
 const Index = ({ children }) => {
   const router = useRouter();
-  // const logoutMutation = useMutation(
-  //   async () => {
-  //     await authApi.logout();
-  //   },
-  //   {
-  //     onSuccess: () => {
-  //       router.push("/signin");
-  //     },
-  //   }
-  // );
-  // const { data, isLoading } = useQuery(["user"], async () => {
-  //   const response = await (await fetch("/api/currentUser")).json();
-  //   console.log("res", response);
-  //   if (!response?.uid) {
-  //     router.push("/signin");
-  //   } else {
-  //     const userRef = doc(db, "users", response.uid);
-  //     const userRes = await getDoc(userRef);
-
-  //     if (userRes.exists) {
-  //       return userRes.data();
-  //     }
-  //   }
-
-  //   return null;
-  // });
-  // if (isLoading) {
-  //   return <Spin className="absolute top-1/2 left-1/2" />;
-  // }
-
+  
   const items = [
     {
       key: "2",
@@ -83,53 +55,52 @@ const Index = ({ children }) => {
       <Sidebar role={"admin"} />
       <Layout className="site-layout">
         <Header
-          className="site-layout-background flex items-center justify-end"
+          className=" bg-transparent flex items-center justify-between w-full"
           style={{ paddingTop: 20, paddingBottom: 20, height: "4rem" }}
         >
-          <Dropdown menu={{ items }} placement="bottom">
-            <Avatar
-              size="large"
-              icon={<UserOutlined style={{ color: "black" }} />}
-              className="flex items-center justify-center bg-white cursor-pointer"
-            />
-          </Dropdown>
+  
+  <div className="flex items-center mr-auto ml-4 fontFamily">
+          <Input
+            placeholder="Search"
+            className="border border-[#0852C12B] rounded-md px-4 py-2 text-sm sm:text-base focus:outline-none focus:border-blue-500 searchBar w-full"
+            suffix={<SearchOutlined style={{ color: "rgba(0, 0, 0, 0.25)" }} />}
+          />
+        </div>
 
-          {/* <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: ".5rem",
-              paddingRight: "30px",
-            }}
-          >
-            <Avatar
-              size="large"
-              icon={<UserOutlined style={{ color: "black" }} />}
-              className="flex items-center justify-center bg-white"
+<div className="flex items-center">
+    {/* Country Image */}
+    <div className="mr-4">
+            <img
+              src="/images/country.svg" 
+              alt="Country"
+              className="w-8 h-8 rounded-full"
             />
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <span
-                className="text-sm md:text-lg font-medium font-poppins"
-                style={{ textTransform: "capitalize", color: "#F49342" }}
-              >
-                {data?.name}
-              </span>
-              <span
-                className="text-white text-xs md:text-base font-normal font-poppins"
-                style={{ textTransform: "capitalize", opacity: "60" }}
-              >
-                {data?.role}
-              </span>
-            </div>
-          </div> */}
+          </div>
+          {/* Bell Icon with Notification Count */}
+          <div className="relative mr-4">
+            <BellOutlined style={{ fontSize: "24px", color: "rgba(0, 0, 0, 0.65)" }} />
+            <span
+              className="absolute top-0 right-0 w-4 h-4 bg-red-500 text-white flex items-center justify-center rounded-full text-xs"
+              style={{ fontSize: "0.625rem", fontWeight: "bold" }}
+            >
+              9 
+            </span>
+          </div>
+
+
+          {/* Avatar */}
+          <div>
+            <Dropdown menu={{ items }} placement="bottomRight">
+              <Avatar
+                size="large"
+                icon={<UserOutlined style={{ color: "black" }} />}
+                className="flex items-center justify-center bg-white cursor-pointer"
+              />
+            </Dropdown>
+          </div>
+          </div>
         </Header>
-        <Content
-        >
-          
-
-            {children}
-        </Content>
+        <Content>{children}</Content>
       </Layout>
     </Layout>
   );

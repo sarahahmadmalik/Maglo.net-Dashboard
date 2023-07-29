@@ -1,20 +1,44 @@
 import Image from "next/image";
-import { useState } from "react";
-
-const SellerCard = ({ seller }) => {
+import { useState, useEffect, useRef } from "react";
+const SellerCard = ({ seller, onOpenModal, onEditModal }) => {
   const [showActions, setShowActions] = useState(false);
+  const actionsRef = useRef();
 
   const handleActionsToggle = () => {
     setShowActions(!showActions);
   };
 
-  const handleEdit = () => {
-    // Handle edit action
+  const handleEdit = (sellerId) => {
+    onEditModal(sellerId)
+    setShowActions(false);
   };
 
-  const handleDelete = () => {
-    // Handle delete action
+  const handleDelete = (sellerId) => {
+    onOpenModal(sellerId);
+    setShowActions(false);
   };
+
+  const handleCloseActions = () => {
+    setShowActions(false);
+  };
+
+  useEffect(() => {
+
+    const handleOutsideClick = (event) => {
+      if (!actionsRef.current.contains(event.target)) {
+        setShowActions(false);
+      }
+    };
+
+  
+    document.body.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.body.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
+
+  
 
   return (
     <div className="shadow-lg rounded-md p-4 border border-[#F9F9F9]">
@@ -85,7 +109,7 @@ const SellerCard = ({ seller }) => {
         </div>
       </div>
       </div>
-        <div className="relative hidden md:block">
+        <div className="relative hidden md:block" ref={actionsRef}>
           <button
             className="p-1 rounded-md hover:bg-gray-200"
             onClick={handleActionsToggle}
@@ -98,16 +122,20 @@ const SellerCard = ({ seller }) => {
             />
           </button>
           {showActions && (
-            <div className="absolute right-0 top-10 w-32 bg-white border border-gray-300 rounded-md shadow-md">
+            <div
+              className="absolute right-0 top-10 w-32 bg-white rounded-md shadow-lg overflow-hidden " 
+              style={{ border: "1px solid #E5E7EB" }}
+            >
               <button
-                className="block w-full py-1 text-sm text-left px-4 hover:bg-gray-200"
-                onClick={handleEdit}
+                className="block w-full py-1 text-sm text-left px-4 transition-colors duration-200 hover:bg-blue-500 overflow-hidden"
+                onClick={() => handleEdit(seller.id)}
               >
                 Edit
               </button>
               <button
-                className="block w-full py-1 text-sm text-left px-4 hover:bg-gray-200"
-                onClick={handleDelete}
+                className="block w-full py-1 text-sm text-left px-4 transition-colors duration-200 hover:bg-red-600 text-white overflow-hidden"
+                style={{ backgroundColor: "#F73B3F" }}
+                onClick={() => handleDelete(seller.id)}
               >
                 Delete
               </button>
@@ -115,7 +143,7 @@ const SellerCard = ({ seller }) => {
           )}
         </div>
       </div>
-     
+   
       
     </div>
   );
