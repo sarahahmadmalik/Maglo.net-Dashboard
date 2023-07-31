@@ -256,7 +256,7 @@ const Index = () => {
             <Head>
                 <title>Sellers</title>
             </Head>
-            <div className="h-full w-full bg-[#F9F9F9] my-4">
+            <div className="h-full w-full my-4">
                 <div className="flex justify-between mx-[2rem] bg-[#FFFFFF] rounded-md shadow-md px-4 py-4">
                     <div>
                         <h1 className="text-[24px] font-[600]">Seller</h1>

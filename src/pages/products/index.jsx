@@ -2,81 +2,14 @@ import ProductModal from "@/components/Products/ProductModal";
 // import categoryApi from "@/lib/category";
 // import productApi from "@/lib/product";
 import { useQuery } from "@tanstack/react-query";
-
+import { Modal } from "antd";
+import { Button } from 'antd';
 import Head from "next/head";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 
 const Index = () => {
-  const [showProductModal, setShowProductModal] = useState(false);
-  const [selectedRows, setSelectedRows] = useState([]);
-  const [formattedDateTime, setFormattedDateTime] = useState("");
-  const [showActions, setShowActions] = useState(false);
-  const actionsRef = useRef();
-
-  const handleActionsToggle = () => {
-
-    setShowActions(!showActions);
-  
-  };
-
-  const handleEdit = (sellerId) => {
-    // onEditModal(sellerId)
-    setShowActions(false);
-  };
-
-  const handleDelete = (sellerId) => {
-    // onOpenModal(sellerId);
-    setShowActions(false);
-  };
-
-  const handleCloseActions = () => {
-    setShowActions(false);
-  };
-
-  useEffect(() => {
-
-    const handleOutsideClick = (event) => {
-      if (!actionsRef.current.contains(event.target)) {
-        setShowActions(false);
-      }
-    };
-
-  
-    document.body.addEventListener("click", handleOutsideClick);
-
-    return () => {
-      document.body.removeEventListener("click", handleOutsideClick);
-    };
-  }, []);
-
-  useEffect(() => {
-    const currentDateAndTime = new Date();
-    const options = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true
-    };
-    const newFormattedDateTime = currentDateAndTime.toLocaleString("en-US", options);
-    setFormattedDateTime(newFormattedDateTime.replace(" at", ""));
-  }, []);
-  const toggleRowSelection = (productId) => {
-    setSelectedRows((prevSelectedRows) => {
-      if (prevSelectedRows.includes(productId)) {
-        return prevSelectedRows.filter((id) => id !== productId);
-      } else {
-        return [...prevSelectedRows, productId];
-      }
-    });
-  };
-
-
-  const categories=['engine'];
- 
-  const products = [
+  let products = [
     {
       id: 1,
       name: "Product Name",
@@ -178,12 +111,96 @@ const Index = () => {
     },
   ];
 
+  const [showProductModal, setShowProductModal] = useState(false);
+  const [selectedRows, setSelectedRows] = useState([]);
+  const [formattedDateTime, setFormattedDateTime] = useState("");
+  const [showActions, setShowActions] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const[Allproducts, setAllproducts] = useState(products)
+  const [selectedProductId, setSelectedProductId] = useState(null);
+  const actionsRef = useRef();
+
+  const handleActionsToggle = (productId) => {
+    setSelectedProductId(productId);
+    setShowActions(!showActions);
+  };
+
+  const handleDeleteConfirmation = () => {
+    const updatedProducts = products.filter((product) => product.id !== selectedProductId);
+    const updated = products.filter((product) => product.id !== selectedProductId);
+    products = updated
+    console.log(updatedProducts)
+    setAllproducts(updatedProducts);
+    setSelectedProductId(null)
+    setShowDeleteModal(false);
+  };
+
+ 
+
+  const handleDelete = (productId) => {
+    setSelectedProductId(productId);
+    setShowActions(false);
+    setShowDeleteModal(true);
+  };
+
+  const handleDeleteCancel = () => {
+    setShowDeleteModal(false);
+    setSelectedProductId(null)
+  };
+
+ console.log(showActions)
+ console.log(selectedProductId)
+
+  // useEffect(() => {
+
+  //   const handleOutsideClick = (event) => {
+  //     if (!actionsRef.current.contains(event.target)) {
+  //       setShowActions(false);
+  //     }
+  //   };
+
+  
+  //   document.body.addEventListener("click", handleOutsideClick);
+
+  //   return () => {
+  //     document.body.removeEventListener("click", handleOutsideClick);
+  //   };
+  // }, []);
+
+  useEffect(() => {
+    const currentDateAndTime = new Date();
+    const options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true
+    };
+    const newFormattedDateTime = currentDateAndTime.toLocaleString("en-US", options);
+    setFormattedDateTime(newFormattedDateTime.replace(" at", ""));
+  }, []);
+  const toggleRowSelection = (productId) => {
+    setSelectedRows((prevSelectedRows) => {
+      if (prevSelectedRows.includes(productId)) {
+        return prevSelectedRows.filter((id) => id !== productId);
+      } else {
+        return [...prevSelectedRows, productId];
+      }
+    });
+  };
+
+
+  const categories=['engine'];
+ 
+  
+
   return (
     <div className="w-full bg-[F9F9F9]">
       <Head>
         <title>Products</title>
       </Head>
-      <div className="h-full w-full bg-[#F9F9F9] my-4">
+      <div className="h-full w-full my-4">
         <div className="flex justify-between mx-[2rem] bg-[#FFFFFF] rounded-md shadow-md px-4 py-4">
           <div>
             <h1 className="text-[24px] font-[600]">Product Management</h1>
@@ -246,7 +263,7 @@ const Index = () => {
         <div className="flex flex-col sm:flex-row text-sm  md:text-[16px] mx-4">
           <div className="flex">
           <p className="mr-2">Products:</p>{" "}
-          <p className="mr-2">All ({products.length})</p>
+          <p className="mr-2">All ({Allproducts.length})</p>
           <p className="hidden sm:block">  {" | "}</p>
           </div>
         <div className="flex">
@@ -298,7 +315,7 @@ const Index = () => {
             </thead>
             {/* Table body */}
             <tbody>
-              {products.map((product) => (
+              {Allproducts.map((product) => (
                 <tr
                   key={product.id}
                   className={` text-xs hover:bg-blue-100 py-4 ${
@@ -347,20 +364,22 @@ const Index = () => {
                   <td className="text-[#777777] font-[400] md:text-[14px] text-xs">
                     {product.statistics}
                   </td>
-                  <td className="flex justify-center items-center">
+                  <td className="">
+                    <div className="flex justify-center items-center">
                     <Image
                       src="/images/start.svg"
                       width={16}
                       height={16}
                       alt="Rating"
                     />
+                    </div>
                   </td>
                   <td className="text-[#777777] font-[400] md:text-[14px] text-xs">
                     <p>Last Modified</p>
                     {product.date}
                   </td>
                   <td className="flex justify-around items-center">
-                    <button className="flex items-center w-60px my-3" >
+                    <button className="flex items-center w-60px my-5" >
                       <Image
                         src="/images/edit.svg"
                         width={16}
@@ -368,33 +387,33 @@ const Index = () => {
                         alt="Edit"
                       />
                     </button>
-                    <div className="relative z-[3] md:block" ref={actionsRef}>
-          <button
-            className="p-1 rounded-md hover:bg-gray-200"
-            onClick={handleActionsToggle}
-          >
-            <Image
-              src="/images/more.svg"
-              width={3}
-              height={3}
-              alt="More Actions"
-            />
-          </button>
-          {showActions && (
-            <div
-              className="absolute right-0 top-10 z-[10] w-32 bg-white rounded-md shadow-lg overflow-hidden border " 
-              style={{ border: "1px solid #E5E7EB" }}
-            >
-              <button
-                className="block w-full py-1 text-sm text-left px-4 transition-colors duration-200 hover:bg-red-600 text-white overflow-hidden"
-                style={{ backgroundColor: "#F73B3F" }}
-                onClick={() => handleDelete(seller.id)}
-              >
-                Delete
-              </button>
-            </div>
-          )}
-        </div>
+                    <div className="relative md:block" ref={actionsRef}>
+                      <button
+                        className="p-1 rounded-md hover:bg-gray-200"
+                        onClick={() => handleActionsToggle(product.id)}
+                      >
+                        <Image
+                          src="/images/more.svg"
+                          width={3}
+                          height={3}
+                          alt="More Actions"
+                        />
+                      </button>
+                      {showActions && selectedProductId === product.id && (
+                        <div
+                          className="absolute right-0 top-[-20]  w-32 bg-white rounded-md shadow-lg overflow-hidden border " 
+                          style={{ border: "1px solid #E5E7EB" }}
+                        >
+                          <button
+                            className="block w-full py-1 text-sm text-left px-4 transition-colors duration-200 hover:bg-red-600 text-white overflow-hidden"
+                            style={{ backgroundColor: "#F73B3F" }}
+                            onClick={() => handleDelete(product.id)}
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      )}
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -411,14 +430,35 @@ const Index = () => {
           categories={categories}
         />
       )}
+        <Modal
+  title="Delete Seller"
+  visible={showDeleteModal}
+  onCancel={handleDeleteCancel}
+  footer={[
+    <Button
+      key="cancel"
+      className="btn-cancel"
+      onClick={handleDeleteCancel}
+    >
+      No
+    </Button>,
+    <Button
+      key="delete"
+      className="btn-delete"
+      type="primary"
+      style={{ backgroundColor: '#F73B3F', borderColor: '#F73B3F' }}
+      onClick={handleDeleteConfirmation}
+    >
+      Yes
+    </Button>,
+  ]}
+>
+  <p>Do you want to delete this seller?</p>
+</Modal>
+
     </div>
   );
 };
 
 export default Index;
 
-// export const getServerSideProps = async () => {
-//   const categories = await categoryApi.getCategories();
-//   const products = await productApi.getProdcuts();
-//   return { props: { categories, products } };
-// };

@@ -96,7 +96,7 @@ const Index = () => {
       <Head>
         <title>Account Settings</title>
       </Head>
-      <div className="h-full w-full bg-[#F9F9F9] my-4 overflow-hidden">
+      <div className="h-full w-full  my-4 overflow-hidden">
         <div className="flex md:flex-row flex-col md:justify-between mx-[2rem] bg-[#FFFFFF] rounded-md shadow-md px-4 py-4">
           <div>
             <h1 className="md:text-[24px] text-lg font-[600]">
