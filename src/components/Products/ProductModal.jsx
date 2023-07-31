@@ -204,7 +204,8 @@ const ProductModal = (props) => {
 
           <Form.Item>
             <Button
-              className="btn-primary"
+              className="hover:bg-[#49A5FF] transition-ease 1000ms"
+              style={{background: "#0852C1"}}
               size="large"
               type="primary"
               htmlType="submit"

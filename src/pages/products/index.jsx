@@ -5,12 +5,51 @@ import { useQuery } from "@tanstack/react-query";
 
 import Head from "next/head";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const Index = () => {
   const [showProductModal, setShowProductModal] = useState(false);
   const [selectedRows, setSelectedRows] = useState([]);
   const [formattedDateTime, setFormattedDateTime] = useState("");
+  const [showActions, setShowActions] = useState(false);
+  const actionsRef = useRef();
+
+  const handleActionsToggle = () => {
+
+    setShowActions(!showActions);
+  
+  };
+
+  const handleEdit = (sellerId) => {
+    // onEditModal(sellerId)
+    setShowActions(false);
+  };
+
+  const handleDelete = (sellerId) => {
+    // onOpenModal(sellerId);
+    setShowActions(false);
+  };
+
+  const handleCloseActions = () => {
+    setShowActions(false);
+  };
+
+  useEffect(() => {
+
+    const handleOutsideClick = (event) => {
+      if (!actionsRef.current.contains(event.target)) {
+        setShowActions(false);
+      }
+    };
+
+  
+    document.body.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.body.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
+
   useEffect(() => {
     const currentDateAndTime = new Date();
     const options = {
@@ -33,6 +72,9 @@ const Index = () => {
       }
     });
   };
+
+
+  const categories=['engine'];
  
   const products = [
     {
@@ -166,7 +208,7 @@ const Index = () => {
       <div className="flex flex-col md:flex-row justify-between mx-[2rem] my-4 ">
         {/* First div with two buttons */}
         <div className="flex">
-          <button className="bg-[#0852C1] text-white text-xs md:text-base font-medium px-4 py-2 rounded-md mr-2 flex flex-row-reverse items-center transition-colors duration-300 hover:bg-[#0E71EB]">
+          <button className="bg-[#0852C1] text-white text-xs md:text-base font-medium px-4 py-2 rounded-md mr-2 flex flex-row-reverse items-center transition-colors duration-300 hover:bg-[#0E71EB]" onClick={() => setShowProductModal(true)}>
             <Image
               src="/images/addProduct.svg"
               width={16}
@@ -318,7 +360,7 @@ const Index = () => {
                     {product.date}
                   </td>
                   <td className="flex justify-around items-center">
-                    <button className="flex items-center w-60px my-3">
+                    <button className="flex items-center w-60px my-3" >
                       <Image
                         src="/images/edit.svg"
                         width={16}
@@ -326,14 +368,33 @@ const Index = () => {
                         alt="Edit"
                       />
                     </button>
-                    <button className="w-[50px] flex items-center justify-center my-6">
-                      <Image
-                        src="/images/more.svg"
-                        width={3}
-                        height={3}
-                        alt="Delete"
-                      />
-                    </button>
+                    <div className="relative z-[3] md:block" ref={actionsRef}>
+          <button
+            className="p-1 rounded-md hover:bg-gray-200"
+            onClick={handleActionsToggle}
+          >
+            <Image
+              src="/images/more.svg"
+              width={3}
+              height={3}
+              alt="More Actions"
+            />
+          </button>
+          {showActions && (
+            <div
+              className="absolute right-0 top-10 z-[10] w-32 bg-white rounded-md shadow-lg overflow-hidden border " 
+              style={{ border: "1px solid #E5E7EB" }}
+            >
+              <button
+                className="block w-full py-1 text-sm text-left px-4 transition-colors duration-200 hover:bg-red-600 text-white overflow-hidden"
+                style={{ backgroundColor: "#F73B3F" }}
+                onClick={() => handleDelete(seller.id)}
+              >
+                Delete
+              </button>
+            </div>
+          )}
+        </div>
                   </td>
                 </tr>
               ))}

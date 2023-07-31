@@ -78,10 +78,10 @@ const Index = ({ children }) => {
           </div>
           {/* Bell Icon with Notification Count */}
           <div className="relative mr-4">
-            <BellOutlined style={{ fontSize: "24px", color: "rgba(0, 0, 0, 0.65)" }} />
+            <BellOutlined style={{ fontSize: "24px", color: "rgba(0, 0, 0, 0.65)", }} />
             <span
-              className="absolute top-0 right-0 w-4 h-4 bg-red-500 text-white flex items-center justify-center rounded-full text-xs"
-              style={{ fontSize: "0.625rem", fontWeight: "bold" }}
+              className="w-4 h-4 bg-[#C13508] text-white rounded-full text-xs text-center"
+              style={{ fontSize: "0.7rem", fontWeight: "bold", background: "#C13508", position: "absolute", top: "6px", right:"-2px"}}
             >
               9 
             </span>
@@ -93,8 +93,8 @@ const Index = ({ children }) => {
             <Dropdown menu={{ items }} placement="bottomRight">
               <Avatar
                 size="large"
-                icon={<UserOutlined style={{ color: "black" }} />}
-                className="flex items-center justify-center bg-white cursor-pointer"
+                icon={<UserOutlined style={{ color: "#FFFFFF" }} />}
+                className="flex items-center justify-center bg-[#0852C1] cursor-pointer"
               />
             </Dropdown>
           </div>
