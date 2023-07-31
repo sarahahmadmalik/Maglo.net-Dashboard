@@ -108,7 +108,7 @@ const Index = () => {
         id: 8,
         name: "James Williams",
         email: "email@gmail.com",
-        review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+        review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
         date: "02/09/2023",
         time: "03:33 pm",
         image: "/images/review4.svg",
@@ -185,7 +185,7 @@ const Index = () => {
         <div className="flex flex-col h-[155px] w-[175px] text-center items-center bg-[#FFFFFF] py-4 px-6 rounded-md shadow-md mx-2 my-2 md:my-0">
           <div className="relative">
             <Image
-              src="/images/Start.svg"
+              src="/images/start.svg"
               width={40}
               height={40}
               alt="4 Stars"
