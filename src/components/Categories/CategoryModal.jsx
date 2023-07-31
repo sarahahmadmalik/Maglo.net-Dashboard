@@ -98,9 +98,9 @@ const CategoryModal = (props) => {
               type="primary"
               htmlType="submit"
             >
-              {addMutation.isLoading || updateMutation.isLoading
+              {/* {addMutation.isLoading || updateMutation.isLoading
                 ? "Submitting..."
-                : "Submit"}
+                : "Submit"} */}
             </Button>
           </Form.Item>
         </Form>

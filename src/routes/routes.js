@@ -21,6 +21,12 @@ const routes = [
     roles: ["user", "admin"],
   },
   {
+    path: "/categories",
+    icon: <Image src={"/images/products.svg"} width={18} height={20} />,
+    title: "Categories",
+    roles: ["user", "admin"],
+  },
+  {
     path: "/orders",
     icon: <Image src={"/images/products.svg"} width={18} height={20} />,
     title: "Orders",
