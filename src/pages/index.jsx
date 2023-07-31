@@ -78,7 +78,7 @@ const Index = () => {
         <title>Dashboard</title>
       </Head>
     
-      <div className="h-full w-full bg-[#F9F9F9] m-0">
+      <div className="h-full w-full  m-0">
           <div className="w-full h-full flex flex-col flex-grow py-4">
             
             <div className="flex justify-between mx-[2rem] bg-[#FFFFFF] rounded-md shadow-md px-4 py-4">
