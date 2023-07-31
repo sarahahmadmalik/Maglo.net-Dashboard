@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Stats = () => {
     return (
-      <div className="grid grid-cols-2 gap-x-4 gap-y-3 my-4 mx-4 overflow-hidden h-[243px] ">
+      <div className="grid grid-cols-2 gap-x-4 gap-y-3 my-4 mx-4 overflow-hidden grid-auto-flow-row h-[252px] ">
         {/* Cell 1 */}
         <div className="flex flex-col xl:flex-grow px-4 py-2 md:w-[120px] rounded-md shadow-md bg-[#FFFFFF] ">
           <div className="flex items-center justify-between mb-2">
@@ -32,7 +32,7 @@ const Stats = () => {
         </div>
   
         {/* Cell 3 */}
-        <div className="flex flex-col px-4 py-2 md:w-[120px] xl:flex-grow rounded-md shadow-md bg-[#FFFFFF]">
+        <div className="flex flex-col px-4 py-2 md:w-[120px] mb-2 xl:flex-grow rounded-md shadow-md bg-[#FFFFFF]">
           <div className="flex items-center justify-between mb-2">
           <div className="w-8 h-8 bg-[#CEB014] rounded-md flex justify-center items-center"> <Image src="/images/handIcon.svg" width={16} height={16}/></div>
             <button className="text-gray-400 hover:text-gray-600">
@@ -46,7 +46,7 @@ const Stats = () => {
         </div>
   
         {/* Cell 4 */}
-        <div className="flex flex-col px-4 py-2 md:w-[120px] xl:flex-grow rounded-md shadow-md bg-[#FFFFFF]">
+        <div className="flex flex-col px-4 py-2 md:w-[120px] xl:flex-grow rounded-md mb-2 shadow-md bg-[#FFFFFF]">
           <div className="flex items-center justify-between mb-2">
           <div className="w-8 h-8 bg-[#CE1991] rounded-md flex justify-center items-center"> <Image src="/images/incomeIcon.svg" width={16} height={16}/></div>
             <button className="text-gray-400 hover:text-gray-600">

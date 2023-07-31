@@ -52,7 +52,7 @@ const ConversationRate = () => {
     
   }, [progress]);
   return (
-    <div className="p-4 rounded-md bg-[#FFFFFF] shadow-md my-4 flex md:flex-row flex-col   md:justify-between md:items-center">
+    <div className="p-4 rounded-md bg-[#FFFFFF] shadow-md my-4 flex md:flex-row flex-col items-center md:justify-between md:items-center">
       <div>
          <h1 className="text-xl font-bold">Conversation Rate</h1>
         <table className="table-auto mt-4 bg-transparent">

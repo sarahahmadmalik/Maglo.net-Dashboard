@@ -70,7 +70,7 @@ const ProfitPerformance = () => {
   }, []);
 
   return (
-    <div className="flex flex-col md:flex-1 md:items-stretch  p-4 rounded-md bg-[#FFFFFF] shadow-md my-4  md:w-[232px] md:h-[237px]">
+    <div className="flex flex-col md:flex-1 md:items-stretch  p-4 rounded-md bg-[#FFFFFF] shadow-md my-4  md:w-[232px] md:h-[243px] w-full">
       <h1 className="text-[16px] font-bold">Profit Performance</h1>
       <div className="relative h-36 w-38 flex md:mt-[1.4rem]">
         <canvas ref={chartRef} width={200} height={200} />
