@@ -70,7 +70,7 @@ const Index = ({ children }) => {
         </Link>
       </Menu.Item>
       <Menu.Item key="Account Settings" icon={<SettingOutlined />} onClick={handleMenuClick}>
-        <Link href="/accountsettings">
+        <Link href="/settings">
         Settings
         </Link>
       </Menu.Item>
