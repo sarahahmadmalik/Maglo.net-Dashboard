@@ -39,7 +39,7 @@ const Index = ({ children }) => {
           Dashboard
         </Link>
       </Menu.Item>
-      <Menu.Item key="Sller" icon={<UserOutlined />} onClick={handleMenuClick}>
+      <Menu.Item key="Seller" icon={<UserOutlined />} onClick={handleMenuClick}>
         <Link href="/seller">
           Seller
         </Link>
