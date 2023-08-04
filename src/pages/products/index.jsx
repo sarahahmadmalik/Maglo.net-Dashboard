@@ -120,7 +120,23 @@ const Index = () => {
   const[Allproducts, setAllproducts] = useState(products)
   const [selectedProductId, setSelectedProductId] = useState(null);
   const actionsRef = useRef();
+  const [isContentWrapped, setIsContentWrapped] = useState(false);
 
+  useEffect(() => {
+    const handleResize = () => {
+      const windowWidth = window.innerWidth;
+      setIsContentWrapped(windowWidth < 490); 
+    };
+
+ 
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   const handleActionsToggle = (productId) => {
     setSelectedProductId(productId);
     setShowActions(!showActions);
@@ -225,7 +241,7 @@ const Index = () => {
         </div>
       </div>
 
-      <div className="flex flex-row justify-between md:mx-[2rem] mx-4 my-4 items-start flex-wrap ">
+      <div className={`flex ${isContentWrapped ? "justify-center" : "justify-between"} flex-row  md:mx-[2rem] mx-4 my-4 items-start flex-wrap`}>
         {/* First div with two buttons */}
         <div className="flex">
           <button className="bg-[#0852C1] text-white text-xs md:text-base font-medium px-4 py-2 rounded-md mr-2 flex flex-row-reverse items-center transition-colors duration-300 hover:bg-[#0E71EB]" onClick={() => setShowProductModal(true)}>
@@ -244,12 +260,12 @@ const Index = () => {
         </div>
 
         {/* Second div with search bar */}
-        <div className="flex items-center md:my-3 sm:my-0  flex-wrap">
+        <div className={`flex ${isContentWrapped ? "mt-3" : "mt-0"} items-center md:my-3 sm:my-0  flex-wrap`}>
           <div className="relative">
             <input
               type="text"
               placeholder="Search"
-              className="py-2  pl-2 pr-4 rounded-md bg-[#EBEFF6] border border-[#0852C12B] text-black text-sm md:text-base focus:outline-none transition-all duration-300"
+              className="py-2  pl-2 pr-4 rounded-md bg-[#EBEFF6] border border-[#0852C12B] text-black text-xs md:text-base focus:outline-none transition-all duration-300"
             />
             <Image
               src="/images/searchIcon.svg"
@@ -299,15 +315,15 @@ const Index = () => {
       </div>
       <div>
         {/* Table */}
-        <div className="w-full overflow-x-auto px-4 py-4 ">
-          <table className=" hidden md:block w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto">
+        <div className="w-full overflow-x-auto px-4 py-4 border border-grey-600">
+          <table className=" hidden md:block w-full mx-auto ">
             {/* Table headers */}
-            <thead className="rounded-lg shadow-md my-3">
-              <tr className="text-[#0852C1] rounded-lg shadow-md bg-[#FFFFFF] text-left text-xs md:text-base px-4 py-4">
+            <thead className="rounded-lg shadow-md my-3 w-full">
+              <tr className="text-[#0852C1] rounded-lg shadow-md bg-[#FFFFFF] text-left text-xs md:text-base px-4 py-4 w-full">
                 <th className="w-0 "></th>
-                <th className="w-1/4 px-3 py-6 ">Products Name</th>
-                <th className="w-1/12 px-3 py-4 mx-2">SKU</th>
-                <th className="w-1/12">Stock</th>
+                <th className="w-1/4  px-3 py-6 ">Products Name</th>
+                <th className="w-1/12 xl:w-1/6  px-3 py-4 mx-2">SKU</th>
+                <th className="w-1/12 xl:w-1/6">Stock</th>
                 <th className="md:w-1/12 w-1/8">Price</th>
                 <th className="w-1/12">Category</th>
                 <th className="w-1/12">Statistics</th>
