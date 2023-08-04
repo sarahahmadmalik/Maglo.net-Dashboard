@@ -166,7 +166,7 @@ const Index = ({ children }) => {
         </Header>
         <div className="md:hidden mt-3 flex items-center justify-between bg-[#FFFFFF] rounded-md shadow-md p-4 mx-4">
       <div>
-            <h1 className="sm:text-[24px] text-[18px] font-[600]">{selectedMenuItem}</h1>
+            <h1 className="sm:text-[24px] text-[20px] font-[600]">{selectedMenuItem}</h1>
           </div>
         <div>
           <Dropdown overlay={navMenu} trigger={["click"]}  >

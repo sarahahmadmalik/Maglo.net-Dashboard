@@ -116,7 +116,9 @@ const Index = () => {
   const [selectedRows, setSelectedRows] = useState([]);
   const [formattedDateTime, setFormattedDateTime] = useState("");
   const [showActions, setShowActions] = useState(false);
+  const [showModify, setShowModify] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showModifyModal, setShowModifyModal] = useState(false);
   const[Allproducts, setAllproducts] = useState(products)
   const [selectedProductId, setSelectedProductId] = useState(null);
   const actionsRef = useRef();
@@ -151,6 +153,19 @@ const Index = () => {
     setSelectedProductId(null)
     setShowDeleteModal(false);
   };
+
+  const handlemodify = (prodId) => {
+    setShowModify(true);
+    setShowModifyModal(true)
+
+  }
+
+  const handleModifyToggle = (productId) => {
+    setSelectedProductId(productId);
+    setShowModify(!showModify);
+    setShowModifyModal(true)
+  };
+
 
  
 
@@ -398,7 +413,7 @@ const Index = () => {
                     {product.date}
                   </td>
                   <td className="flex justify-around items-center">
-                    <button className="flex items-center w-60px my-5" >
+                    <button className="flex items-center w-60px my-5"   onClick={() => handleModifyToggle(product.id)}  >
                       <Image
                         src="/images/edit.svg"
                         width={16}
@@ -522,11 +537,11 @@ const Index = () => {
                 </div>
                 <div className= "flex justify-between items-center  pb-3 mb-2 flex-wrap ">
                 <p className="text-[#777777] font-[400] text-[17px] font-[500] flex">
-                    <p className="text-[#0852C1] mr-1">Price:</p>{" "}${product.Price}
+                    <p className="text-[#0852C1] mr-1">Price:</p>{" "}{product.Price}
                   </p>
                 <div className="flex">
                     <button
-                      className="flex items-center  px-2 py-2 "
+                      className="flex items-center  px-2 py-2 "    onClick={() => handleModifyToggle(product.id)}
                     >
                       <Image
                         src="/images/edit.svg"
@@ -536,7 +551,7 @@ const Index = () => {
                       />
                     </button>
                     <div className="relative md:block" ref={actionsRef}>
-                      {showActions && selectedProductId === product.id && (
+                      {showModify && selectedProductId === product.id && (
                         <div
                           className="absolute right-0 top-6  w-32 bg-white rounded-md shadow-lg overflow-hidden border "
                           style={{ border: '1px solid #E5E7EB' }}
@@ -544,7 +559,7 @@ const Index = () => {
                           <button
                             className="block w-full py-1 text-sm text-left px-4 transition-colors duration-200 hover:bg-green-600 text-white overflow-hidden"
                             style={{ backgroundColor: '#0852C1' }}
-                            onClick={() => handleDelete(product.id)}
+                            onClick={() => handlemodify(product.id)}
                           >
                             Edit
                           </button>
