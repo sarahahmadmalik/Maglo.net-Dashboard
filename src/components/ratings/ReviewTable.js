@@ -32,7 +32,7 @@ const ReviewTable = ({ reviews }) => {
 
   return (
     <div className="w-full  ">
-    <table className="w-full overflow-x-auto my-4 px-3 lg:visible invisible ">
+    <table className="w-full overflow-x-auto my-4 px-3 hidden lg:table ">
     <tbody className="py-3 w-full ">
       {reviews.map((review) => (
         <tr

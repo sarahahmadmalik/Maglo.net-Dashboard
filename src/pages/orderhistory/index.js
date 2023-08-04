@@ -156,7 +156,7 @@ const Index = () => {
       <div className="w-full ">
         {/* Table */}
         <div className="w-full  overflow-x-auto px-4 py-4">
-          <table className="w-full invisible md:visible">
+          <table className="w-full hidden md:table">
             {/* Table headers */}
             <thead className="rounded-[10px] shadow-md my-3">
               <tr className="text-[#0852C1] rounded-[10px] shadow-md bg-[#FFFFFF] text-left px-4 py-4">
