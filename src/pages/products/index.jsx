@@ -220,7 +220,7 @@ const Index = () => {
      
       <div className="h-full w-full my-4">
 
-        <div className="hidden flex md:flex-row justify-between md:mx-[2rem] mx-4 bg-[#FFFFFF] rounded-md shadow-md px-4 py-4">
+        <div className="hidden  md:flex-row md:flex justify-between md:mx-[2rem] mx-4 bg-[#FFFFFF] rounded-md shadow-md px-4 py-4">
           <div>
             <h1 className="text-[24px] font-[600]">Product Management</h1>
           </div>
@@ -315,7 +315,7 @@ const Index = () => {
       </div>
       <div>
         {/* Table */}
-        <div className="w-full overflow-x-auto px-4 py-4 border border-grey-600">
+        <div className="w-full overflow-x-auto px-4 py-4 ">
           <table className=" hidden md:block w-full mx-auto ">
             {/* Table headers */}
             <thead className="rounded-lg shadow-md my-3 w-full">
