@@ -24,7 +24,23 @@ const [showModifyModal, setShowModifyModal] = useState(false);
   const [addNewCategModal, setAddNewCategModal] = useState(false)
   const actionsRef = useRef();
   const [subcategories, setSubcategories] = useState([""]);
+  const [isContentWrapped, setIsContentWrapped] = useState(false);
 
+  useEffect(() => {
+    const handleResize = () => {
+      const windowWidth = window.innerWidth;
+      setIsContentWrapped(windowWidth < 430); 
+    };
+
+ 
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   const handleActionsToggle = (categId) => {
     setSelectedCategId(categId);
     setShowActions(!showActions);
@@ -169,7 +185,7 @@ const [showModifyModal, setShowModifyModal] = useState(false);
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row justify-between mx-[2rem] my-4 ">
+      <div className={`flex ${isContentWrapped ? "justify-center" : "justify-between"} flex-wrap items-center md:items-start flex-row mx-[2rem] my-4`}>
         {/* First div with two buttons */}
         <div className="flex">
           <button className="bg-[#0852C1] text-white text-xs md:text-base font-medium px-4 py-2 rounded-md mr-2 flex flex-row-reverse items-center transition-colors duration-300 hover:bg-[#0E71EB]" onClick={() => setAddNewCategModal(true)}>
@@ -185,19 +201,19 @@ const [showModifyModal, setShowModifyModal] = useState(false);
         </div>
 
         {/* Second div with search bar */}
-        <div className="flex items-center my-3 sm:my-0">
+        <div className="flex items-center my-3 sm:my-0 w-auto">
           <div className="relative">
             <input
               type="text"
               placeholder="Search"
-              className="py-2  pl-2 pr-4 rounded-md bg-[#EBEFF6] border border-[#0852C12B] text-black text-base focus:outline-none transition-all duration-300"
+              className="py-2  pl-2 pr-4 rounded-md bg-[#EBEFF6] border border-[#0852C12B] text-black text-xs md:text-base focus:outline-none transition-all duration-300"
             />
             <Image
               src="/images/searchIcon.svg"
               width={16}
               height={16}
               alt="Search"
-              className="absolute right-3 top-3"
+              className="absolute right-3 md:top-3 top-2"
             />
           </div>
         </div>

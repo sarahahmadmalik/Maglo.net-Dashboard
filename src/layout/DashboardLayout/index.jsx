@@ -119,14 +119,14 @@ const Index = ({ children }) => {
       <Sidebar role={"admin"} />
       <Layout className="site-layout">
         <Header
-          className=" bg-transparent flex items-center justify-between w-full px-0"
+          className=" bg-transparent flex items-center justify-between w-full pl-0"
           style={{ paddingTop: 20, paddingBottom: 20, height: "4rem" }}
         >
   
-  <div className="flex items-center mr-auto md:ml-4 fontFamily">
+  <div className="flex items-center mr-3 md:ml-4 fontFamily ">
           <Input
             placeholder="Search"
-            className="border border-[#0852C12B] rounded-md px-4 py-2 text-sm md:text-base focus:outline-none focus:border-blue-500 searchBar w-full"
+            className="border border-[#0852C12B] rounded-md px-4 py-2 text-sm md:text-base focus:outline-none focus:border-blue-500 searchBar sm:w-full "
             suffix={<SearchOutlined style={{ color: "blue" }} />}
           />
         </div>
