@@ -152,8 +152,8 @@ const Index = () => {
                 </button>
               </div>
             </div>
-            <div className="w-full flex flex-grow flex-1 flex-wrap">
-              <div className="bg-[#FFFFFF] flex flex-col  justify-around  shadow-lg md:w-[260px] rounded-lg py-3 px-5 sm:ml-3  md:ml-3 md:ml-0 md:my-3 w-full  md:h-auto h-full overflow-hidden">
+            <div className="w-full flex flex-grow flex-1 flex-wrap ">
+              <div className="bg-[#FFFFFF] flex flex-col  justify-around  shadow-lg md:w-[260px] rounded-lg py-3 px-5 sm:ml-3   md:ml-0 md:my-3 w-full  md:h-auto h-full overflow-hidden">
                 <div className="flex items-start my-2 ">
                   <div className="relative w-5 h-5 mr-3">
                     <Image
