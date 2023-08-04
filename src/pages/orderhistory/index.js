@@ -153,10 +153,10 @@ const Index = () => {
         </div>
       </div>
 
-      <div>
+      <div className="w-full ">
         {/* Table */}
-        <div className="w-full overflow-x-auto px-4 py-4">
-          <table className="w-full">
+        <div className="w-full  overflow-x-auto px-4 py-4">
+          <table className="w-full invisible md:visible">
             {/* Table headers */}
             <thead className="rounded-[10px] shadow-md my-3">
               <tr className="text-[#0852C1] rounded-[10px] shadow-md bg-[#FFFFFF] text-left px-4 py-4">
@@ -243,17 +243,101 @@ const Index = () => {
               ))}
             </tbody>
           </table>
+          <div className="md:hidden flex flex-col space-y-4">
+            {history.map((order) => (
+              <div
+                key={order.id}
+                className={`bg-white rounded-md shadow-md p-4 ${
+                  selectedRows.includes(order.id) ? 'bg-blue-100 shadow-lg' : ''
+                }`}
+              >
+                <div className="flex items-center mb-4 ">
+                  <div className="rounded-lg overflow-hidden mr-4">
+                    <Image
+                      src={order.image}
+                      width={60}
+                      height={60}
+                      alt="Product Image"
+                    />
+                  </div>
+                  <div>
+                  <p className="font-semibold text-base">{order.name}</p>
+                  <div>
+                  <p>Category: {" "}{order.category} Engine</p>
+                  <p>OrderId: {" "}{order.orderId}</p>
+                  </div>
+                 
+                  </div>
+                  
+                </div>
+                <div className="flex justify-between border-b border-blue-500 pb-3 sm:text-[17px]   flex-wrap items-center mb-2">
+                 
+                  <div className="flex flex-wrap">
+                    <p className="text-[#0852C1] ">Subcategories:</p>
+                    <div className="flex flex-wrap">
+                    <p className="ml-2 text-[#777777]">sub category-1</p>{","}
+                    <p className="ml-2 text-[#777777]">sub category-2</p>
+                    </div>
+                   
+                  </div>
+                  
+                 
+                </div>
+                <div className="flex justify-between border-b border-blue-500 pb-3 sm:text-[17px]   flex-wrap items-center mb-2">
+                  <p className="text-[#777777] font-[400]  flex">
+                    <p className="text-[#0852C1] mr-1">Seller:</p>{" "}{order.seller}
+                  </p>
+                  <p className="text-[#777777] font-[400] flex ">
+                  <p className="text-[#0852C1] mr-1">Payment:</p> {" "}{order.payment}
+                  </p>
+                  <p className="text-[#777777] font-[400] flex items-center  ">
+                    Type: {" "}   
+                    <div className="flex py-2 px-2 bg-blue-500 rounded-md ml-2">
+                  <p className="text-white font-[400] flex ">
+                  {order.Type}
+                  </p>
+                  </div>
+                  </p>
+                
+                  
+                 
+                </div>
+                <div className="flex justify-between pt-3  pb-3 mb-2 flex-wrap  sm:text-[17px]">
+                  <p className="text-[#777777] font-[400]  flex items-center">
+                  <p className="text-[#0852C1] mr-1">Time Remaining:</p> 
+                  <div className="flex">
+                  <Image
+      src="/images/clock.svg"
+      className="mr-2 ml-2"
+      width={16}
+      height={16}
+      alt="Clock Icon"
+    />
+    {order.time}
+                  </div>
+                  </p>
+                  <div className="flex items-start justify-center text-white">
+                  <p
+                      className={`rounded-md px-2 py-2 ${
+                        order.status === "Cancelled"
+                          ? "bg-[#D94B38]"
+                          : order.status === "Delivered"
+                          ? "bg-[#49E258]"
+                          : "bg-[#F0E74A]"
+                      }`}
+                    >
+                      {order.status}
+                    </p>
+                  </div>
+                  
+                </div>
+               
+              </div>
+            ))}
+          </div>  
         </div>
       </div>
-      {showProductModal && (
-        <ProductModal
-          show={showProductModal}
-          close={() => {
-            setShowProductModal(false);
-          }}
-          categories={categories}
-        />
-      )}
+   
     </div>
   );
 };

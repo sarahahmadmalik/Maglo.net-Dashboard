@@ -1,80 +1,69 @@
 import { PieChartOutlined, HomeFilled, SettingFilled } from "@ant-design/icons";
+import {
+  MenuOutlined,
+  DashboardOutlined,
+  ShoppingCartOutlined,
+  AppstoreAddOutlined,
+  UnorderedListOutlined,
+  HistoryOutlined,
+  StarOutlined,
+  SettingOutlined,
+  DownOutlined,
+} from "@ant-design/icons";
+import { UserOutlined } from "@ant-design/icons";
+
 import Image from "next/image";
 const routes = [
   {
     path: "/",
-    icon: <Image src={"/images/menu.svg"} width={12} height={12} />,
+    icon: <DashboardOutlined />,
     title: "Dashboard",
     roles: ["admin", "user"],
   },
 
   {
     path: "/seller",
-    icon: <Image src={"/images/sellerIcon.svg"} width={18} height={20} />,
+    icon: <UserOutlined />,
     title: "Seller",
     roles: ["user", "admin"],
   },
   {
     path: "/products",
-    icon: <Image src={"/images/products.svg"} width={18} height={20} />,
+    icon: <ShoppingCartOutlined />,
     title: "Products",
     roles: ["user", "admin"],
   },
   {
     path: "/categories",
-    icon: <Image src={"/images/products.svg"} width={18} height={20} />,
+    icon: <AppstoreAddOutlined />,
     title: "Categories",
     roles: ["user", "admin"],
   },
   {
     path: "/orders",
-    icon: <Image src={"/images/products.svg"} width={18} height={20} />,
+    icon: <UnorderedListOutlined />,
     title: "Orders",
     roles: ["user", "admin"],
   },
   
   {
     path: "/orderhistory",
-    icon: <Image src={"/images/history.svg"} width={14} height={14} />,
+    icon: <HistoryOutlined />,
     title: "Order History",
     roles: ["user", "admin"],
   },
     {
     path: "/ratings",
-    icon: <Image src={"/images/ratings.svg"} width={14} height={14} />,
+    icon: <StarOutlined />,
     title: "Ratings",
     roles: ["user", "admin"],
   },
     {
-    path: "/accountsettings",
-    icon: <Image src={"/images/settings.svg"} width={14} height={14} />,
+    path: "/settings",
+    icon: <SettingOutlined />,
     title: "Account Settings",
     roles: ["user", "admin"],
-  },
-  // {
-  //   path: "/doctors",
-  //   icon: <Image src={'/images/doctors_icon.svg'} width={12} height={12} />,
-  //   title: "Doctors",
-  //   roles: ["user", "admin"],
-  // },
-  // {
-  //   path: "/nurses",
-  //   icon: <Image src={'/images/nurses_icon.svg'} width={12} height={12} />,
-  //   title: "Nurses",
-  //   roles: ["user"],
-  // },
-  // {
-  //   path: "/patients",
-  //   icon: <Image src={'/images/patients_icon.svg'} width={12} height={12} />,
-  //   title: "Patients",
-  //   roles: ["user", "admin"],
-  // },
-  // {
-  //   path: "/analysis",
-  //   icon: <Image src={'/images/analysis_icon.svg'} width={12} height={12} />,
-  //   title: "Analysis",
-  //   roles: ["user", "admin"],
-  // },
+  }
 ];
 
 export default routes;

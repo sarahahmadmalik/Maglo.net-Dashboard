@@ -8,7 +8,7 @@ const ReviewTable = ({ reviews }) => {
         
       
         return (
-          <div className="flex justify-center items-center h-full">
+          <div className="flex justify-center items-center h-full ">
             {Array(filledStarsCount).fill(null).map((_, index) => (
               <img
                 key={index}
@@ -31,20 +31,21 @@ const ReviewTable = ({ reviews }) => {
       
 
   return (
-    <table className="w-full overflow-x-auto my-4 px-3">
-    <tbody className="py-3">
+    <div className="w-full  ">
+    <table className="w-full overflow-x-auto my-4 px-3 lg:visible invisible ">
+    <tbody className="py-3 w-full ">
       {reviews.map((review) => (
         <tr
           key={review.id}
-          className={`hover:bg-blue-100 py-3 px-2 md:flex ${
+          className={`w-full hover:bg-blue-100 py-3 px-2 md:flex ${
             review.id % 2 === 0
               ? "bg-white shadow-md rounded-md my-4"
               : "hover:bg-blue-200"
           }`}
         >
           {/* User Info Column */}
-          <td className="md:flex md:items-center md:w-1/4 md:px-4 md:py-6">
-            <div className="w-10 h-10 bg-gray-300 rounded-lg overflow-hidden mr-4">
+          <td className="md:flex md:items-center md:w-1/4 xl:w-full md:px-4 md:py-6">
+            <div className="lg:w-20 lg:h-20 w-10 h-10 bg-gray-300 rounded-lg overflow-hidden mr-4">
               <img src={review.image} alt="User Avatar" className="w-full h-full object-cover" />
             </div>
             <div className="flex flex-col">
@@ -53,11 +54,11 @@ const ReviewTable = ({ reviews }) => {
             </div>
           </td>
           {/* Stars Column */}
-          <td className="md:w-1/8 md:px-4 md:py-2 text-center">{renderStars(review.stars)}</td>
+          <td className="md:w-1/8 xl:w-1/4 md:px-4 md:py-2 text-center">{renderStars(review.stars)}</td>
           {/* Review Column */}
-          <td className="md:w-1/2 md:px-4 md:py-2">
+          <td className="md:w-1/2 xl:w-full md:px-4 md:py-2">
             <div className="border border-gray-300 p-4 mt-1 rounded-md">
-              {/* Display the full review in a dropdown when clicked */}
+
               <div>
                 {review.review.length > 150 && expandedReviewId !== review.id && (
                   <>
@@ -87,7 +88,7 @@ const ReviewTable = ({ reviews }) => {
             </div>
           </td>
           {/* Date Column */}
-          <td className="md:w-1/4 md:px-4 md:py-3">
+          <td className="md:w-1/4 xl:w-1/2 md:px-4 md:py-3">
             <div className="flex items-start h-full justify-center">
               <img src="/images/clock1.svg" alt="Clock Icon" className="w-4 h-4 my-2 md:mr-2" />
               <div className="flex flex-col h-full ">
@@ -108,6 +109,7 @@ const ReviewTable = ({ reviews }) => {
       ))}
     </tbody>
   </table>
+  </div>
   );
 };
 
