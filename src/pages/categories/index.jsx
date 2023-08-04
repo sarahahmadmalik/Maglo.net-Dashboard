@@ -1,16 +1,16 @@
 
-import { Modal } from "antd";
-import { Button } from 'antd';
+import { Modal, Input, Button, Space } from 'antd';
 import Head from "next/head";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import CategoryModal from '../../components/Categories/CategoryModal'
+import { PlusOutlined } from '@ant-design/icons';
 const Index = () => {
  
   const category=[{
     id: 1,
     name: 'Engine',
-    products: 10
+    subcategories: ['Subcat1', 'Subcat2']
   }]
 
   const [formattedDateTime, setFormattedDateTime] = useState("");
@@ -23,6 +23,7 @@ const [showModifyModal, setShowModifyModal] = useState(false);
   const [selectedCategId, setSelectedCategId] = useState(null);
   const [addNewCategModal, setAddNewCategModal] = useState(false)
   const actionsRef = useRef();
+  const [subcategories, setSubcategories] = useState([""]);
 
   const handleActionsToggle = (categId) => {
     setSelectedCategId(categId);
@@ -94,6 +95,17 @@ const [showModifyModal, setShowModifyModal] = useState(false);
   
     };
     
+    const handleSubcategoryChange = (event, index) => {
+      const newSubcategories = [...subcategories];
+      newSubcategories[index] = event.target.value;
+      setSubcategories(newSubcategories);
+    };
+  
+    // Function to add a new subcategory input field
+    const handleAddSubcategory = () => {
+      setSubcategories([...subcategories, ""]);
+    };
+    
   
 
 
@@ -136,7 +148,7 @@ const [showModifyModal, setShowModifyModal] = useState(false);
         <title>Categories</title>
       </Head>
       <div className="h-full w-full my-4">
-        <div className="flex justify-between mx-[2rem] bg-[#FFFFFF] rounded-md shadow-md px-4 py-4">
+        <div className="hidden md:flex justify-between mx-[2rem] bg-[#FFFFFF] rounded-md shadow-md px-4 py-4">
           <div>
             <h1 className="text-[24px] font-[600]">Categories</h1>
           </div>
@@ -208,7 +220,7 @@ const [showModifyModal, setShowModifyModal] = useState(false);
               <tr className="text-[#0852C1] rounded-lg shadow-md bg-[#FFFFFF] text-left text-xs md:text-base px-4 py-4">
                 <th className="text-center">#</th>
                 <th className="px-3 py-6 text-center">Category</th>
-                <th className=" px-3 py-4 mx-2 text-center">Total Products</th>
+                <th className=" px-3 py-4 mx-2 text-center">Subcategories</th>
                 <th className=" px-3 py-4 mx-2 text-center">Actions</th>
               </tr>
             </thead>
@@ -234,7 +246,9 @@ const [showModifyModal, setShowModifyModal] = useState(false);
                     </div>
                   </td>
                   <td className="text-[#777777] font-[500] md:text-[14px] text-xs text-center">
-                    {categ.products}
+                    {categ.subcategories.map((subcat, index) => (
+                      <div key={index} classnName="pt-2">{subcat}</div>
+                    ))}
                   </td>
                  
                   <td className="flex justify-center items-center">
@@ -281,39 +295,70 @@ const [showModifyModal, setShowModifyModal] = useState(false);
         </div>
       </div>
       {addNewCategModal && (
-        <Modal
-        title="Add a new Category"
-        visible={addNewCategModal}
-        onCancel={() => {
+      <Modal
+      title="Add a new Category"
+      visible={addNewCategModal}
+      onCancel={() => {
+        setAddNewCategModal(false);
+        setNewCategory("");
+        setSubcategories([""]); 
+      }}
+      footer={[
+        <Button key="cancel" onClick={() => {
           setAddNewCategModal(false);
-          setNewCategory(""); 
-        }}
-        footer={[
-          <Button key="cancel" onClick={() => setAddNewCategModal(false)}>
-            Cancel
-          </Button>,
-          <Button
-            key="submit"
-            type="primary"
-            style={{background: "#4096FF"}}
-            onClick={handleAddSubmit}
-            disabled={newCategory.trim() === "" }
-          >
-            Save
-          </Button>,
-        ]}
-      >
-        <form className="my-4" onSubmit={handleAddSubmit}>
-          <label className="font-semibold">Category Name:</label>
-          <input
-            type="text"
-            className="border p-2 rounded-md w-full"
-            value={newCategory}
-            onChange={(e) => setNewCategory(e.target.value)}
-            required
-          />
-        </form>
-      </Modal>
+          setSubcategories([""]);
+          }}>
+          Cancel
+        </Button>,
+        <Button
+          key="submit"
+          type="primary"
+          style={{ background: "#4096FF" }}
+          onClick={handleAddSubmit}
+          disabled={newCategory.trim() === ""}
+        >
+          Save
+        </Button>,
+      ]}
+    >
+      <form className="my-4" onSubmit={handleAddSubmit}>
+        <label className="font-semibold">Category Name:</label>
+        <Input
+          type="text"
+          className="border p-2 rounded-md w-full"
+          value={newCategory}
+          onChange={(e) => setNewCategory(e.target.value)}
+          required
+        />
+    
+        {/* Subcategory inputs */}
+        <div className="flex flex-col">
+        <label className="font-semibold mt-4">Subcategories:</label>
+        <Space direction="vertical">
+          {subcategories.map((subcat, index) => (
+            <Input
+              key={index}
+              className="border p-2 rounded-md "
+              value={subcat}
+              onChange={(e) => handleSubcategoryChange(e, index)}
+              required
+            />
+          ))}
+        </Space>
+        </div>
+        
+    
+        <Button
+          type="dashed"
+          className="mt-2 flex items-center"
+          icon={<PlusOutlined />}
+          onClick={handleAddSubcategory}
+        >
+          Add a subcategory
+        </Button>
+      </form>
+    </Modal>
+    
       )}
       {showModifyModal && (
   <Modal

@@ -6,6 +6,7 @@ import { Modal } from "antd";
 import { Button } from 'antd';
 import Head from "next/head";
 import Image from "next/image";
+import Link from 'next/link'
 import { useState, useEffect, useRef } from "react";
 
 const Index = () => {
@@ -200,8 +201,10 @@ const Index = () => {
       <Head>
         <title>Products</title>
       </Head>
+     
       <div className="h-full w-full my-4">
-        <div className="flex justify-between mx-[2rem] bg-[#FFFFFF] rounded-md shadow-md px-4 py-4">
+
+        <div className="hidden flex md:flex-row justify-between md:mx-[2rem] mx-4 bg-[#FFFFFF] rounded-md shadow-md px-4 py-4">
           <div>
             <h1 className="text-[24px] font-[600]">Product Management</h1>
           </div>
@@ -222,7 +225,7 @@ const Index = () => {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row justify-between mx-[2rem] my-4 ">
+      <div className="flex flex-row justify-between md:mx-[2rem] mx-4 my-4 items-start flex-wrap ">
         {/* First div with two buttons */}
         <div className="flex">
           <button className="bg-[#0852C1] text-white text-xs md:text-base font-medium px-4 py-2 rounded-md mr-2 flex flex-row-reverse items-center transition-colors duration-300 hover:bg-[#0E71EB]" onClick={() => setShowProductModal(true)}>
@@ -241,12 +244,12 @@ const Index = () => {
         </div>
 
         {/* Second div with search bar */}
-        <div className="flex items-center my-3 sm:my-0">
+        <div className="flex items-center md:my-3 sm:my-0  flex-wrap">
           <div className="relative">
             <input
               type="text"
               placeholder="Search"
-              className="py-2  pl-2 pr-4 rounded-md bg-[#EBEFF6] border border-[#0852C12B] text-black text-base focus:outline-none transition-all duration-300"
+              className="py-2  pl-2 pr-4 rounded-md bg-[#EBEFF6] border border-[#0852C12B] text-black text-sm md:text-base focus:outline-none transition-all duration-300"
             />
             <Image
               src="/images/searchIcon.svg"
@@ -259,8 +262,8 @@ const Index = () => {
         </div>
       </div>
 
-      <div className=" flex flex-col md:flex-row justify-between items-center px-4 ">
-        <div className="flex flex-col sm:flex-row text-sm  md:text-[16px] mx-4">
+      <div className=" flex flex-row justify-between items-center px-2 flex-wrap">
+        <div className="flex flex-row text-sm flex-wrap mx-4">
           <div className="flex">
           <p className="mr-2">Products:</p>{" "}
           <p className="mr-2">All ({Allproducts.length})</p>
@@ -273,7 +276,7 @@ const Index = () => {
           <p>(87)</p>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row">
+        <div className="flex flex-row flex-wrap">
           <div className="text-[14px] font-[500] flex bg-[#FFFFFF] border border-[#0852C12B] items-center px-2 rounded-md my-1 mx-2">
             Sort by:
             <div className="relative text-left ml-1">
@@ -296,8 +299,8 @@ const Index = () => {
       </div>
       <div>
         {/* Table */}
-        <div className="w-full overflow-x-auto px-4 py-4">
-          <table className="w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto">
+        <div className="w-full overflow-x-auto px-4 py-4 ">
+          <table className=" hidden md:block w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto">
             {/* Table headers */}
             <thead className="rounded-lg shadow-md my-3">
               <tr className="text-[#0852C1] rounded-lg shadow-md bg-[#FFFFFF] text-left text-xs md:text-base px-4 py-4">
@@ -419,6 +422,124 @@ const Index = () => {
               ))}
             </tbody>
           </table>
+          <div className="md:hidden flex flex-col space-y-4">
+            {Allproducts.map((product) => (
+              <div
+                key={product.id}
+                className={`bg-white rounded-md shadow-md p-4 ${
+                  selectedRows.includes(product.id) ? 'bg-blue-100 shadow-lg' : ''
+                }`}
+              >
+                <div className="flex items-center mb-4">
+                  <div className="rounded-lg overflow-hidden mr-4">
+                    <Image
+                      src={product.image}
+                      width={60}
+                      height={60}
+                      alt="Product Image"
+                    />
+                  </div>
+                  <div>
+                  <p className="font-semibold text-base">{product.name}</p>
+                  <p>Category: {" "}{product.category}</p>
+                  </div>
+                 
+                  <div className="ml-auto">
+                    <button
+                      className="p-1 rounded-md hover:bg-gray-200"
+                      onClick={() => handleActionsToggle(product.id)}
+                    >
+                      <Image
+                        src="/images/more.svg"
+                        width={3}
+                        height={3}
+                        alt="More Actions"
+                      />
+                    </button>
+                    <div className="relative md:block" ref={actionsRef}>
+                      {showActions && selectedProductId === product.id && (
+                        <div
+                          className="absolute right-0 top-0  w-32 bg-white rounded-md shadow-lg overflow-hidden border "
+                          style={{ border: '1px solid #E5E7EB' }}
+                        >
+                          <button
+                            className="block w-full py-1 text-sm text-left px-4 transition-colors duration-200 hover:bg-red-600 text-white overflow-hidden"
+                            style={{ backgroundColor: '#F73B3F' }}
+                            onClick={() => handleDelete(product.id)}
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+                <div className="flex justify-between border-b border-blue-500 pb-3  flex-wrap items-center mb-2">
+                  <p className="text-[#777777] font-[400]  flex">
+                    <p className="text-[#0852C1] mr-1">SKU:</p>{" "}{product.sku}
+                  </p>
+                  <p className="text-[#777777] font-[400] flex ">
+                  <p className="text-[#0852C1] mr-1">Stock:</p> {" "}{product.stock}
+                  </p>
+                  <p className="text-[#777777] font-[400] flex ">
+                  <p className="text-[#0852C1] mr-1">Statistics: </p>{product.statistics}
+                  </p>
+                 
+                </div>
+                <div className="flex justify-between pt-1 border-b border-blue-500 pb-3 mb-2 flex-wrap">
+                  <p className="text-[#777777] font-[400]  flex">
+                  <p className="text-[#0852C1] mr-1">Last Modified:</p> {product.date}
+                  </p>
+                  <div className="flex items-start justify-center">
+                  <p className="text-[#0852C1] font-[400]  mr-2">
+                      Rate
+                    </p>
+                    <Image
+                      src="/images/start.svg"
+                      width={16}
+                      height={16}
+                      alt="Rating"
+                    />
+                    
+                  </div>
+                  
+                </div>
+                <div className= "flex justify-between items-center  pb-3 mb-2 flex-wrap ">
+                <p className="text-[#777777] font-[400] text-[17px] font-[500] flex">
+                    <p className="text-[#0852C1] mr-1">Price:</p>{" "}${product.Price}
+                  </p>
+                <div className="flex">
+                    <button
+                      className="flex items-center  px-2 py-2 "
+                    >
+                      <Image
+                        src="/images/edit.svg"
+                        width={16}
+                        height={16}
+                        alt="Edit"
+                      />
+                    </button>
+                    <div className="relative md:block" ref={actionsRef}>
+                      {showActions && selectedProductId === product.id && (
+                        <div
+                          className="absolute right-0 top-6  w-32 bg-white rounded-md shadow-lg overflow-hidden border "
+                          style={{ border: '1px solid #E5E7EB' }}
+                        >
+                          <button
+                            className="block w-full py-1 text-sm text-left px-4 transition-colors duration-200 hover:bg-green-600 text-white overflow-hidden"
+                            style={{ backgroundColor: '#0852C1' }}
+                            onClick={() => handleDelete(product.id)}
+                          >
+                            Edit
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>         
         </div>
       </div>
       {showProductModal && (
@@ -453,7 +574,7 @@ const Index = () => {
     </Button>,
   ]}
 >
-  <p>Do you want to delete this seller?</p>
+  <p>Do you want to delete this product?</p>
 </Modal>
 
     </div>

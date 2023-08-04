@@ -158,8 +158,8 @@ const Index = () => {
       <Head>
         <title>Reviews</title>
       </Head>
-      <div className="h-full w-full my-4">
-        <div className="flex justify-between mx-[2rem] bg-[#FFFFFF] rounded-md shadow-md px-4 py-4">
+      <div className="h-full w-full md:my-4 mb-4">
+        <div className="hidden md:flex justify-between mx-[2rem] bg-[#FFFFFF] rounded-md shadow-md px-4 py-4">
           <div>
             <h1 className="text-[24px] font-[600]">Reviews</h1>
           </div>

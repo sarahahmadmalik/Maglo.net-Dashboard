@@ -97,7 +97,7 @@ const Index = () => {
         <title>Account Settings</title>
       </Head>
       <div className="h-full w-full  my-4 overflow-hidden">
-        <div className="flex md:flex-row flex-col md:justify-between mx-[2rem] bg-[#FFFFFF] rounded-md shadow-md px-4 py-4">
+        <div className="hidden md:flex md:flex-row flex-col md:justify-between mx-[2rem] bg-[#FFFFFF] rounded-md shadow-md px-4 py-4">
           <div>
             <h1 className="md:text-[24px] text-lg font-[600]">
               Account Settings
@@ -118,9 +118,9 @@ const Index = () => {
             </div>
           </div>
         </div>
-        <div className="w-full h-full flex md:flex-row flex-col items-center md:justify-start my-5 md:mx-8 ">
-          <div className=" flex flex-col">
-            <div className="flex flex-col items-center bg-[#FFFFFF] shadow-lg rounded-md px-3 py-5  md:w-[260px]">
+        <div className="w-full h-full flex md:flex-row flex-col items-center md:justify-start my-5 md:mx-8 px-4 md:px-0 ">
+          <div className=" w-full md:w-80 flex md:flex-col flex-wrap  ">
+            <div className="flex flex-col flex-grow  items-center bg-[#FFFFFF] shadow-lg rounded-md px-3 py-5  md:w-[260px]">
               <div className="flex items-center justify-center mt-1">
                 <div className="w-30 h-30 rounded-full  overflow-hidden">
                   <Image
@@ -152,9 +152,9 @@ const Index = () => {
                 </button>
               </div>
             </div>
-            <div>
-              <div className="bg-[#FFFFFF] shadow-lg w-[260px] rounded-lg py-3 px-5 my-3">
-                <div className="flex items-start my-2">
+            <div className="w-full flex flex-grow flex-1 flex-wrap">
+              <div className="bg-[#FFFFFF] flex flex-col  justify-around  shadow-lg md:w-[260px] rounded-lg py-3 px-5 sm:ml-3  md:ml-3 md:ml-0 md:my-3 w-full  md:h-auto h-full overflow-hidden">
+                <div className="flex items-start my-2 ">
                   <div className="relative w-5 h-5 mr-3">
                     <Image
                       src="/images/email.svg" // Replace with the path to your email icon image
@@ -192,7 +192,7 @@ const Index = () => {
               </div>
             </div>
           </div>
-          <div className="md:w-full md:flex  my-5 mx-4 md:mx-6 lg:mx-10 gap-4">
+          <div className="w-full md:flex-row flex flex-col   my-5 md:my-0 mx-4 md:mx-6 lg:mx-10 gap-4">
             <div className="w-full  bg-[#FFFFFF] shadow-lg rounded-md px-6 py-5">
               <h2 className="font-semibold text-[18px]">{admin.name}</h2>
               <form className="my-3" onSubmit={handleSubmit}>

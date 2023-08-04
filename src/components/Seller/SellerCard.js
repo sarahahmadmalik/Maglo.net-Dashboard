@@ -69,9 +69,9 @@ const SellerCard = ({ seller, onOpenModal, onEditModal }) => {
         
           </div>
         </div>
-        <div className="py-2 md:py-0">
-        <h2 className="text-lg font-semibold hidden md:block">Statistics</h2>
-        <div className="flex flex-row md:flex-col">
+        <div className="w-full flex flex-col flex-wrap md:w-auto py-2 md:py-0">
+        <h2 className="text-lg font-semibold block">Statistics</h2>
+        <div className="flex flex-row md:flex-col justify-between md:justify-start md:items-start items-center">
         <div className="flex  items-center space-x-2">
           <div
             className="w-[58px] h-[50px] bg-[#0852C1] rounded-md flex items-center justify-center py-3 px-3"
@@ -90,7 +90,7 @@ const SellerCard = ({ seller, onOpenModal, onEditModal }) => {
           
         </div>
 
-         <div className="flex items-center space-x-2 mt-2">
+         <div className="flex items-center space-x-2 md:mt-2">
           <div
             className="md:w-[58px] md:h-[50px] h-[50px] w-[50px] bg-[#EE54BA] rounded-md flex items-center justify-center"
           >

@@ -40,6 +40,7 @@ const Sidebar = ({ role }) => {
       onCollapse={setCollapsed}
       collapsedWidth={80} // Set the collapsed width to a value that only shows the logo and icons
       style={{ paddingTop: "1rem", background: "white" }}
+      className="hidden md:block"
     >
       <div className="flex items-center justify-center">
         <Image src={"/images/Maglolologo.svg"} width={118} height={48} />

@@ -13,6 +13,7 @@ const App = ({ Component, pageProps }) => {
     return (
       <QueryClientProvider client={queryClient}>
         <GeneralLayout>
+      
           <Component {...pageProps} />
           <ReactQueryDevtools initialIsOpen={false} />
         </GeneralLayout>

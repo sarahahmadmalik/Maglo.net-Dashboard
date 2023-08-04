@@ -81,7 +81,7 @@ const Index = () => {
       <div className="h-full w-full  m-0">
           <div className="w-full h-full flex flex-col flex-grow py-4">
             
-            <div className="flex justify-between mx-[2rem] bg-[#FFFFFF] rounded-md shadow-md px-4 py-4">
+            <div className="hidden md:flex justify-between mx-[2rem] bg-[#FFFFFF] rounded-md shadow-md px-4 py-4">
               <div>
                 <h1 className="text-[24px] font-[600]">Dashboard</h1>
               </div>
