@@ -275,7 +275,7 @@ const Index = () => {
         </div>
 
         {/* Second div with search bar */}
-        <div className={`flex ${isContentWrapped ? "mt-3" : "mt-0"} items-center md:my-3 sm:my-0  flex-wrap`}>
+        <div className={`flex ${isContentWrapped ? "mt-3" : "mt-0"} items-center md:my-3 sm:my-0  flex-wrap `}>
           <div className="relative">
             <input
               type="text"
