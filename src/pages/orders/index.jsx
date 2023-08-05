@@ -6,7 +6,7 @@ import Head from "next/head";
 import Image from "next/image";
 
 import { useState, useEffect, useRef } from "react";
-
+import DateRangeInput from  '../../components/History/DateRangeInput'
 const Index = () => {
 
   const orders = [
@@ -288,15 +288,7 @@ const Index = () => {
       <div className={`flex ${isContentWrapped ? "justify-center" : "justify-between"} flex-row  flex-wrap  items-start px-6  `}>
         <div className={`flex flex-row ${isContentWrapped ? "justify-center" : ""}  flex-wrap items-center mx-3  w-auto`}>
           <div className="text-[16px] font-[600]">Sales Period:</div>
-          <div className="bg-transparent flex border border-[#0852C12B] rounded-md py-1 px-2 my-1">
-            <p className="font-[500]">08/12/2023 - 08/12/2023</p>
-            <Image
-              src="/images/calender.svg"
-              width={15}
-              height={15}
-              className="ml-2"
-            />
-          </div>
+          <DateRangeInput/>
         </div>
         <div className={`flex ${isContentWrapped2 ?  "justify-center"  : ""} flex-row flex-wrap w-auto `}>
           <div className="text-[14px] font-[500] flex bg-[#FFFFFF] border border-[#0852C12B] items-center px-2 rounded-md my-1 mx-2">

@@ -1,38 +1,37 @@
 import { useState } from "react";
-import Image from "next/image";
+import { DatePicker } from "antd";
+
+import { CalendarOutlined } from "@ant-design/icons";
 
 const DateRangeInput = () => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
-  const handleStartDateChange = (event) => {
-    setStartDate(event.target.value);
+  const handleStartDateChange = (date) => {
+    setStartDate(date);
   };
 
-  const handleEndDateChange = (event) => {
-    setEndDate(event.target.value);
+  const handleEndDateChange = (date) => {
+    setEndDate(date);
   };
 
   return (
-    <div className="flex flex-col mx-3">
-      <div className="bg-transparent flex  rounded-md">
-        <div className="">
-        <input
-          type="date"
+    <div className="flex flex-col items-center space-y-2">
+      <div className="bg-transparent rounded-md p-1 flex items-center space-x-2">
+        <DatePicker
           value={startDate}
           onChange={handleStartDateChange}
-          className=" px-2 py-1 rounded-md border border-[#0852C12B] focus:outline-none"
+          suffixIcon={<CalendarOutlined style={{ color: "#1E7FCB",  }} />}
+          className="rounded-md  border border-[#0852C12B] focus:outline-none "
         />
-        <span className="px-2 font-[500]">To</span>
-        <input
-          type="date"
+        <span className="text-gray-600 font-medium">-</span>
+        <DatePicker
           value={endDate}
           onChange={handleEndDateChange}
-          className=" px-2 py-1 rounded-md border border-[#0852C12B] focus:outline-none"
+          suffixIcon={<CalendarOutlined style={{ color: "#1E7FCB" }} />}
+          className="rounded-md focus:outline-none  border border-[#0852C12B]"
         />
       </div>
-      </div>
-     
     </div>
   );
 };

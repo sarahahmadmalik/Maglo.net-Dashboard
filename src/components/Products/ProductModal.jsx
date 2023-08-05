@@ -103,6 +103,40 @@ const ProductModal = (props) => {
                 };
               })}
             />
+             
+          </Form.Item>
+          <Form.Item
+            style={{ width: "100%" }}
+            name="SubCategory"
+            rules={[
+              {
+                required: true,
+                message: "Select Subcategory",
+              },
+            ]}
+          >
+            <Select
+              style={{ width: "100%", marginTop: 2 }}
+              placeholder="Select SubCategory"
+              options={props?.categories?.map((e) => {
+                return {
+                  label: e?.name,
+                  value: e?.id,
+                };
+              })}
+            />
+          </Form.Item>
+          <Form.Item
+            style={{ width: "100%" }}
+            name="SKU"
+            rules={[
+              {
+                required: true,
+                message: "Input product SKU",
+              },
+            ]}
+          >
+            <Input placeholder="Product SKU" style={{ width: "100%" }} />
           </Form.Item>
           <Form.Item
             style={{ width: "100%" }}
@@ -116,6 +150,7 @@ const ProductModal = (props) => {
           >
             <Input placeholder="Product price" style={{ width: "100%" }} />
           </Form.Item>
+
           <Form.Item
             style={{ width: "100%" }}
             name="stock"

@@ -74,8 +74,12 @@ const [showModifyModal, setShowModifyModal] = useState(false);
     setSelectedCategId(null)
   };
 
-  const handleModify = (categName) => {
+  const handleModify = (categName, categId) => {
+    setSelectedCategId(categId)
     setModifyCategoryName(categName);
+    let selected = category.filter((cat) => cat.id === categId)
+    setSubcategories(selected.subcategories || [""])
+    console.log(subcategories)
     setShowModifyModal(true);
   };
 
@@ -88,7 +92,9 @@ const [showModifyModal, setShowModifyModal] = useState(false);
       );
   
       setShowModifyModal(false);
+      setSelectedCategId("")
       setModifyCategoryName("");
+      setSubcategories([""])
     }
 
     const handleAddSubmit = () => {
@@ -117,10 +123,11 @@ const [showModifyModal, setShowModifyModal] = useState(false);
       setSubcategories(newSubcategories);
     };
   
-    // Function to add a new subcategory input field
+    
     const handleAddSubcategory = () => {
       setSubcategories([...subcategories, ""]);
     };
+    
     
   
 
@@ -230,7 +237,7 @@ const [showModifyModal, setShowModifyModal] = useState(false);
       <div>
         {/* Table */}
         <div className="w-full overflow-x-auto px-4 py-4">
-          <table className="w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto">
+          <table className="w-full table mx-auto">
             {/* Table headers */}
             <thead className="rounded-lg shadow-md my-3 ">
               <tr className="text-[#0852C1] rounded-lg shadow-md bg-[#FFFFFF] text-left text-xs md:text-base px-4 py-4">
@@ -268,7 +275,7 @@ const [showModifyModal, setShowModifyModal] = useState(false);
                   </td>
                  
                   <td className="flex justify-center items-center">
-                    <button className="flex items-center w-60px my-5" onClick={() => handleModify(categ.name) } >
+                    <button className="flex items-center w-60px my-5" onClick={() => handleModify(categ.name, categ.id) } >
                       <Image
                         src="/images/edit.svg"
                         width={16}
@@ -329,7 +336,7 @@ const [showModifyModal, setShowModifyModal] = useState(false);
         <Button
           key="submit"
           type="primary"
-          style={{ background: "#4096FF" }}
+          style={{ background: "#0852C1" }}
           onClick={handleAddSubmit}
           disabled={newCategory.trim() === ""}
         >
@@ -381,18 +388,25 @@ const [showModifyModal, setShowModifyModal] = useState(false);
     title="Modify Category"
     visible={showModifyModal}
     onCancel={() => {
+      setSubcategories([""])
       setShowModifyModal(false);
       setSelectedCategId(null);
       setModifyCategoryName("");
+      
     }}
     footer={[
-      <Button key="cancel" onClick={() => setShowModifyModal(false)}>
+      <Button key="cancel" onClick={() => {
+        setShowModifyModal(false) 
+        setSubcategories([""])
+        setSelectedCategId(null);
+        setModifyCategoryName("");
+      }}>
         Cancel
       </Button>,
       <Button
         key="submit"
         type="primary"
-        style={{background: "#4096FF"}}
+        style={{background: "#0852C1"}}
         onClick={handleModifySubmit}
         disabled={modifyCategoryName.trim() === "" }
       >
@@ -402,7 +416,7 @@ const [showModifyModal, setShowModifyModal] = useState(false);
   >
     <div className="my-4">
       <label className="font-semibold">Category Name:</label>
-      <input
+      <Input
         type="text"
         className="border p-2 rounded-md w-full"
         value={modifyCategoryName}
@@ -410,11 +424,40 @@ const [showModifyModal, setShowModifyModal] = useState(false);
         required
       />
     </div>
+    <div className="my-4 flex flex-col">
+      <label className="font-semibold">Subcategories:</label>
+      <Space direction="vertical">
+      { subcategories &&  subcategories.map((cat, index) => {
+        return(
+          <Input
+          type="text"
+          key={index}
+          className="border p-2 rounded-md w-full" 
+          value={cat}
+          onChange={(e) => setModifyCategoryName(e.target.value)}
+          required
+        />
+        )}
+        
+      )
+      } 
+       </Space>
+
+      <Button
+      type="dashed"
+      className="mt-2 flex items-center"
+      icon={<PlusOutlined />}
+      onClick={handleAddSubcategory}
+    >
+      Add a subcategory
+    </Button>
+
+    </div>
   </Modal>
 )}
 
         <Modal
-  title="Delete Seller"
+  title="Delete Category"
   visible={showDeleteModal}
   onCancel={handleDeleteCancel}
   footer={[
@@ -436,7 +479,7 @@ const [showModifyModal, setShowModifyModal] = useState(false);
     </Button>,
   ]}
 >
-  <p>Do you want to delete this seller?</p>
+  <p>Do you want to delete this category?</p>
 </Modal>
 
     </div>

@@ -3,11 +3,13 @@
 import SellerCard from '../../components/Seller/SellerCard'
 import Head from "next/head";
 import Image from "next/image";
-import { Modal } from "antd";
+import { Modal, Form, Input, Upload } from "antd";
+import { PlusOutlined } from "@ant-design/icons";
 import { Button } from 'antd';
 import {useState, useEffect} from "react";
-
+import DateRangeInput from  '../../components/History/DateRangeInput'
 const Index = () => {
+  
     
     const sellersArray = [
         {
@@ -277,12 +279,7 @@ const Index = () => {
                 <div className="flex md:flex-row flex-col justify-between mx-[2rem] my-4">
                     <div className="flex flex-col">
                         <div className="text-[16px] font-[600]">Sales Period:</div>
-                        <div className="bg-transparent flex border border-[#0852C12B] rounded-md py-1 px-2 my-1">
-                            <p className="font-[500]">08/12/2023 - 08/12/2023</p>
-                            <Image src="/images/calender.svg"
-                                width={15}
-                                height={15}
-                                className="ml-2"/></div>
+                        <DateRangeInput/>
                     </div>
                     <div className="flex flex-col items-right">
                         <div className="text-[1gpx] font-medium text-right">View Profile: {
@@ -353,6 +350,7 @@ const Index = () => {
   title="Delete Seller"
   visible={showDeleteModal}
   onCancel={handleDeleteCancel}
+  
   footer={[
     <Button
       key="cancel"
@@ -378,82 +376,151 @@ const Index = () => {
   title="Edit Seller"
   visible={showEditModal}
   onCancel={handleEditModalCancel}
-  footer={[
-    <Button
-      key="cancel"
-      className="bg-gray-300 text-black hover:bg-gray-400 mr-2"
-      onClick={handleEditModalCancel}
-    >
-      Cancel
-    </Button>,
-    <Button
-      key="save"
-      className="bg-blue-500 text-white hover:bg-blue-600 hover:text-white"
-      onClick={handleEditModalSave}
-    >
-      Save
-    </Button>,
-  ]}
+  footer={null}
+
 >
-  <div className="flex flex-col gap-4 p-4">
-    <div className="flex flex-col">
-      <label htmlFor="name" className="text-sm font-semibold mb-1">
-        Name
-      </label>
-      <input
-        id="name"
-        type="text"
-        value={editedSeller.name}
-        onChange={(e) =>
-          setEditedSeller({ ...editedSeller, name: e.target.value })
-        }
-        className="border border-gray-300 p-2 rounded focus:outline-none focus:border-blue-500 transition-all"
-      />
-    </div>
-    <div className="flex flex-col">
-      <label htmlFor="email" className="text-sm font-semibold mb-1">
-        Email
-      </label>
-      <input
-        id="email"
-        type="email"
-        value={editedSeller.email}
-        onChange={(e) =>
-          setEditedSeller({ ...editedSeller, email: e.target.value })
-        }
-        className="border border-gray-300 p-2 rounded focus:outline-none focus:border-blue-500 transition-all"
-      />
-    </div>
-    <div className="flex flex-col">
-      <label htmlFor="address" className="text-sm font-semibold mb-1">
-        Address
-      </label>
-      <input
-        id="address"
-        type="text"
-        value={editedSeller.address}
-        onChange={(e) =>
-          setEditedSeller({ ...editedSeller, address: e.target.value })
-        }
-        className="border border-gray-300 p-2 rounded focus:outline-none focus:border-blue-500 transition-all"
-      />
-    </div>
-    <div className="flex flex-col">
-      <label htmlFor="phone" className="text-sm font-semibold mb-1">
-        Phone
-      </label>
-      <input
-        id="phone"
-        type="text"
-        value={editedSeller.phone}
-        onChange={(e) =>
-          setEditedSeller({ ...editedSeller, phone: e.target.value })
-        }
-        className="border border-gray-300 p-2 rounded focus:outline-none focus:border-blue-500 transition-all"
-      />
-    </div>
-    {/* Add the input fields for the picture here */}
-  </div>
+   <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
+        <Form
+          size="large"
+          name="basic"
+          onFinish={handleEditModalSave}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+            width: "100%",
+          }}
+        >
+          <Form.Item
+            style={{ width: "100%" }}
+            name="Seller Name"
+            rules={[
+              {
+                required: true,
+                message: "Input Seller Name",
+              },
+            ]}
+          >
+            <Input placeholder="Seller Name" style={{ width: "100%" }} />
+          </Form.Item>
+          <Form.Item
+            style={{ width: "100%" }}
+            name="Email"
+            rules={[
+              {
+                required: true,
+                message: "Input Email",
+              },
+            ]}
+          >
+             <Input placeholder="Seller Email" style={{ width: "100%" }} />
+             
+          </Form.Item>
+         
+          <Form.Item
+            style={{ width: "100%" }}
+            name="Seller Address"
+            rules={[
+              {
+                required: true,
+                message: "Input Seller Address",
+              },
+            ]}
+          >
+            <Input placeholder="Seller Address" style={{ width: "100%" }} />
+          </Form.Item>
+          <Form.Item
+            style={{ width: "100%" }}
+            name="Seller Phone"
+            rules={[
+              {
+                required: true,
+                message: "Input Seller Phone",
+              },
+            ]}
+          >
+            <Input placeholder="Seller Phone" style={{ width: "100%" }} />
+          </Form.Item>
+
+          <Form.Item
+            label="Upload Profile Images"
+            style={{ width: "100%" }}
+            rules={[
+              {
+                required: true,
+                message: "Please upload one image!",
+              },
+            ]}
+            required
+          >
+            <Upload
+              listType="picture-card"
+              maxCount={1}
+              // beforeUpload={(file) => {
+              //   if (file.size > 100000) {
+              //     document.getElementById("errorMsg").textContent =
+              //       "File size should be less than 100MB";
+              //     return Upload.LIST_IGNORE;
+              //   }
+              // }}
+              customRequest={(e) => {
+                const imageRef = ref(
+                  storage,
+                  `product_images/${e.file.name + e.file.uid}`
+                );
+                uploadBytes(imageRef, e.file).then((snapshot) => {
+                  e.onSuccess("ok");
+                  getDownloadURL(snapshot.ref).then((url) => {
+                    setImageList([
+                      ...imageList,
+                      {
+                        id: uuidv4(),
+                        url,
+                      },
+                    ]);
+                  });
+                });
+              }}
+              onRemove={(e) => {
+                const imageRef = ref(
+                  storage,
+                  `product_images/${e.name + e.uid}`
+                );
+                getDownloadURL(imageRef).then((url) => {
+                  const updated = imageList.filter((e) => e !== url.toString());
+                  setImageList(updated);
+                });
+                deleteObject(imageRef);
+              }}
+            >
+              <div>
+                <PlusOutlined />
+                <div
+                  style={{
+                    marginTop: 8,
+                  }}
+                >
+                  Upload
+                </div>
+              </div>
+            </Upload>
+          </Form.Item>
+
+          <Form.Item>
+            <Button
+              className="hover:bg-[#49A5FF] transition-ease 1000ms"
+              style={{background: "#0852C1"}}
+              size="large"
+              type="primary"
+              htmlType="submit"
+              // disabled={addMutation.isLoading}
+            >
+              {/* {addMutation.isLoading ? "Submitting..." : "Submit"} */}
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
+      </div>
 </Modal>
 
 

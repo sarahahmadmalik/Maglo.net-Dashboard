@@ -97,6 +97,19 @@ const Sidebar = ({ role }) => {
           }
         })}
       />
+        <div
+        style={{
+          position: "absolute",
+          bottom: "4rem",
+          left: "40%",
+          transform: "translateX(-50%)",
+          fontWeight: "bold",
+          fontSize: "14px",
+          
+        }}
+      >
+        Design & Developed by <Link style={{color: "#0852C1"}} href="/">ZySoftec</Link>
+      </div>
     </Sider>
   );
 };

@@ -258,7 +258,7 @@ const Index = () => {
 
       <div className={`flex ${isContentWrapped ? "justify-center" : "justify-between"} flex-row  md:mx-[2rem] mx-4 my-4 items-start flex-wrap`}>
         {/* First div with two buttons */}
-        <div className="flex">
+        <div className="flex ">
           <button className="bg-[#0852C1] text-white text-xs md:text-base font-medium px-4 py-2 rounded-md mr-2 flex flex-row-reverse items-center transition-colors duration-300 hover:bg-[#0E71EB]" onClick={() => setShowProductModal(true)}>
             <Image
               src="/images/addProduct.svg"
@@ -331,20 +331,20 @@ const Index = () => {
       <div>
         {/* Table */}
         <div className="w-full overflow-x-auto px-4 py-4 ">
-          <table className=" hidden md:block w-full mx-auto ">
+          <table className=" hidden md:table w-full mx-auto ">
             {/* Table headers */}
             <thead className="rounded-lg shadow-md my-3 w-full">
               <tr className="text-[#0852C1] rounded-lg shadow-md bg-[#FFFFFF] text-left text-xs md:text-base px-4 py-4 w-full">
-                <th className="w-0 "></th>
+                <th className="w-0 px-6"></th>
                 <th className="w-1/4  px-3 py-6 ">Products Name</th>
-                <th className="w-1/12 xl:w-1/6  px-3 py-4 mx-2">SKU</th>
-                <th className="w-1/12 xl:w-1/6">Stock</th>
+                <th className="w-1/12 px-3 py-4 mx-2">SKU</th>
+                <th className="w-1/12 ">Stock</th>
                 <th className="md:w-1/12 w-1/8">Price</th>
                 <th className="w-1/12">Category</th>
                 <th className="w-1/12">Statistics</th>
                 <th className="w-1/12 text-center">Rate</th>
                 <th className="w-1/12">Date</th>
-                <th className="w-1/12">Actions</th>
+                <th className="w-1/12 px-6">Actions</th>
               </tr>
             </thead>
             {/* Table body */}
@@ -412,8 +412,8 @@ const Index = () => {
                     <p>Last Modified</p>
                     {product.date}
                   </td>
-                  <td className="flex justify-around items-center">
-                    <button className="flex items-center w-60px my-5"   onClick={() => handleModifyToggle(product.id)}  >
+                  <td className="flex justify-center items-center">
+                    <button className="flex items-center w-60px my-5 mr-4"   onClick={() => handleModifyToggle(product.id)}  >
                       <Image
                         src="/images/edit.svg"
                         width={16}
@@ -583,7 +583,7 @@ const Index = () => {
         />
       )}
         <Modal
-  title="Delete Seller"
+  title="Delete Product"
   visible={showDeleteModal}
   onCancel={handleDeleteCancel}
   footer={[

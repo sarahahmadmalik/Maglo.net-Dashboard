@@ -43,12 +43,45 @@ const SellerCard = ({ seller, onOpenModal, onEditModal }) => {
   return (
     <div className="shadow-lg rounded-md p-4 border border-[#F9F9F9]">
       <div className="flex md:flex-row flex-col items-start md:justify-between overflow-hidden">
-        <div className="flex items-start mditems-center space-x-4">
+        <div className="flex items-start mditems-center space-x-4 w-full">
           <div className="md:w-90 md:h-90 rounded-md overflow-hidden">
             <Image src={seller.image} width={110} height={110} alt={seller.name} />
           </div>
-          <div className="flex flex-col">
-            <p className="md:text-lg text-base font-semibold">{seller.name}</p>
+          <div className="flex flex-col w-full">
+          <div className="flex items-center justify-between w-full">
+              <p className="md:text-lg text-base font-semibold mr-2">{seller.name}</p>
+              <button
+                className="p-1 rounded-md hover:bg-gray-200 block md:hidden"
+                onClick={handleActionsToggle}
+              >
+                <Image
+                  src="/images/dots.svg"
+                  width={5}
+                  height={5}
+                  alt="More Actions"
+                />
+              </button>
+              {showActions && (
+                <div
+                  className="absolute right-0 top-10 w-32 bg-white rounded-md shadow-lg overflow-hidden"
+                  style={{ border: "1px solid #E5E7EB" }}
+                >
+                  <button
+                    className="block w-full py-1 text-sm text-left px-4 transition-colors duration-200 hover:bg-blue-500 overflow-hidden"
+                    onClick={() => handleEdit(seller.id)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="block w-full py-1 text-sm text-left px-4 transition-colors duration-200 hover:bg-red-600 text-white overflow-hidden"
+                    style={{ backgroundColor: "#F73B3F" }}
+                    onClick={() => handleDelete(seller.id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              )}
+            </div>
             <p className="text-sm">{seller.address}</p>
             <p className="text-sm my-2">{seller.phone}</p>
             <p className="text-sm  mb-2">{seller.email}</p>
