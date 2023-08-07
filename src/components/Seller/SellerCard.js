@@ -42,13 +42,13 @@ const SellerCard = ({ seller, onOpenModal, onEditModal }) => {
 
   return (
     <div className="shadow-lg rounded-md p-4 border border-[#F9F9F9]">
-      <div className="flex md:flex-row flex-col items-start md:justify-between overflow-hidden">
-        <div className="flex items-start mditems-center space-x-4 w-full">
+      <div className="flex md:flex-row flex-col items-start md:justify-between overflow-hidden md:w-auto w-full">
+        <div className="flex items-start md:items-center space-x-4  w-full md:w-auto">
           <div className="md:w-90 md:h-90 rounded-md overflow-hidden">
             <Image src={seller.image} width={110} height={110} alt={seller.name} />
           </div>
-          <div className="flex flex-col w-full">
-          <div className="flex items-center justify-between w-full">
+          <div className="flex flex-col w-full md:w-auto ">
+          <div className="flex items-center justify-between w-full  md:w-auto">
               <p className="md:text-lg text-base font-semibold mr-2">{seller.name}</p>
               <button
                 className="p-1 rounded-md hover:bg-gray-200 block md:hidden"
