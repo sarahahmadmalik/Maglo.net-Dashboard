@@ -78,40 +78,8 @@ const Index = () => {
         <title>Dashboard</title>
       </Head>
     
-      <div className="h-full w-full  m-0">
-          <div className="w-full h-full flex flex-col flex-grow py-4">
-            
-            <div className="hidden md:flex justify-between mx-[2rem] bg-[#FFFFFF] rounded-md shadow-md px-4 py-4">
-              <div>
-                <h1 className="text-[24px] font-[600]">Dashboard</h1>
-              </div>
-              <div className="md:flex items-center hidden ">
-                <div className="flex mr-3">
-                  <p className="text-xs mr-2">Data Refreshed</p>
-                  <Image src="/images/refresh.svg" width={15} height={15} alt="Refresh Icon" />
-                </div>
-                <div className="bg-[#F0F5FB] border rounded-md border-[#0852C12B] px-3 py-3 text-xs font-medium">
-                  <p>{formattedDateTime}</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="">
-              <div className="flex md:flex-row flex-col md:justify-start justify-center  md:items-start md:mx-[2rem] flex-wrap overflow-hidden">
-              <ConversationRate/>
-              <Stats/>
-              <ProfitPerformance/>
-              </div>
-
-              <div  className="flex md:flex-row flex-col md:justify-start justify-center md:items-start md:mx-[2rem]  overflow-hidden">
-                <Visitors/>
-                <MostVisited/>
-              </div>
-            
-            
-            </div>
-
-          </div>
+      <div className="h-full w-full flex justify-center items-center  m-0">
+         <h1 className="font-500">Hello folks, This is sara</h1>
         </div>
         
     </>
