@@ -97,7 +97,7 @@ const Sidebar = ({ role }) => {
           }
         })}
       />
-        <div
+        {/* <div
         style={{
           position: "absolute",
           bottom: "4rem",
@@ -109,7 +109,7 @@ const Sidebar = ({ role }) => {
         }}
       >
         Design & Developed by <Link style={{color: "#0852C1"}} href="/">ZySoftec</Link>
-      </div>
+      </div> */}
     </Sider>
   );
 };
